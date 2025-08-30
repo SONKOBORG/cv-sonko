@@ -3,13 +3,13 @@
 Bienvenue sur mon CV en ligne hébergé grâce à **GitHub Pages** 🚀  
 
 ## 🌐 Accéder à mon CV
-➡️ [Voir mon CV en ligne](https://votre-nom.github.io/cv-sonko)  
+➡️ [Voir mon CV en ligne](https://sonkoborg.github.io/cv-sonko)  
 
-*(Remplacez `votre-nom` par votre pseudo GitHub)*  
+
 
 ## 📌 À propos de moi
 - **Nom :** Ibrahima André Sonko  
-- **Expertise :** Développement commercial & Formation de réseaux  
+- **Expertise :** Développement commercial & Formation de réseaux  France et International
 - **Expérience :** +20 ans dans la vente, l’immobilier et le développement de réseau  
 - **Compétence forte :** Formation et accompagnement (2000+ partenaires formés chez Nickel)  
 
