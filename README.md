@@ -1,24 +1,19 @@
-# CV - Ibrahima André Sonko
+LEPER SONKO - Conseils en Immobilier
+Un site web ultra premium dédié aux conseils en immobilier, mettant l’accent sur la dimension humaine et émotionnelle des décisions immobilières.
 
-Bienvenue sur mon CV en ligne hébergé grâce à **GitHub Pages** 🚀  
+📖 À Propos
+LEPER SONKO est une plateforme de conseils immobiliers qui rejette l’approche purement transactionnelle pour privilégier l’accompagnement humain et bienveillant. Le site présente trois perspectives essentielles :
 
-## 🌐 Accéder à mon CV
-➡️ [Voir mon CV en ligne](https://sonkoborg.github.io/cv-sonko)  
+	•	Pour les Acheteurs : Comprendre vos peurs, vos rêves et trouver le bon moment pour vous
+	•	Pour les Vendeurs : Accepter le changement et passer à la suite sereinement
+	•	Pour les Conseillers : L’importance de l’écoute vraie et de l’accompagnement bienveillant
 
+Le contenu du site est basé sur la série « Ce Que Personne Ne Vous Dit » d’Ibrahima André SONKO, qui explore la psychologie et l’émotion derrière chaque décision immobilière.
 
+🎯 Objectif
+Vendre des services de conseils en immobilier en mettant en avant une approche premium basée sur :
 
-## 📌 À propos de moi
-- **Nom :** Ibrahima André Sonko  
-- **Expertise :** Développement commercial & Formation de réseaux  France et International
-- **Expérience :** +20 ans dans la vente, l’immobilier et le développement de réseau  
-- **Compétence forte :** Formation et accompagnement (2000+ partenaires formés chez Nickel)  
-
-## 📞 Me contacter
-- 📍 Sablé-sur-Sarthe  
-- 📞 06.26.50.77.61  
-- ✉️ [andresonko@icloud.com](mailto:andresonko@icloud.com)  
-- 🔗 [LinkedIn](https://www.linkedin.com/in/sonko?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app)  
-
----
-
-💡 Ce site a été créé avec **HTML + CSS** et est 100% responsive (compatible PC & mobile).  
+	•	L’empathie et la bienveillance
+	•	La compréhension des émotions
+	•	L’accompagnement personnalisé
+	•	La confiance établie par l’écoute
