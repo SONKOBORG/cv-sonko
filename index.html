@@ -1,29 +1,49 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
   <meta charset="UTF-8">
-  <title>LEPER SONKO | Conseil Immobilier</title>
-  <meta name="description" content="Vendre sans enchaîner les visites inutiles. Conseil immobilier premium à Paris et dans l’Ouest parisien.">
+  <title>LEPER SONKO | Conseil Immobilier Premium Paris & Ouest Parisien</title>
+  <meta name="description" content="Vendez votre bien sans visites inutiles. Conseil immobilier premium avec méthode de sélection rigoureuse à Paris et Ouest parisien.">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-  <!-- Google Fonts -->
+  <!-- SEO Enhanced -->
+
+  <meta name="keywords" content="conseil immobilier Paris, vendre appartement Paris, agent immobilier ouest parisien, vente immobilière premium, Neuilly, Issy-les-Moulineaux, Versailles, Boulogne">
+  <meta property="og:title" content="LEPER SONKO | Conseil Immobilier Premium">
+  <meta property="og:description" content="Vendez sans visites inutiles. Accompagnement premium Paris & Ouest parisien.">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://www.lepersonko.com">
+
+  <!-- Google Fonts - Optimized Loading -->
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      --black: #000000;
+      --black: #1A1A1A;
       --white: #FFFFFF;
-      --beige: #D2B48C;
-      --gray: #D9D9D9;
-      --gold: #F7E7CE;
+      --beige: #DBC8B6;
+      --gray: #DDD9D9;
+      --gold: #C9A961;
+      --text-gray: #444444;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
     }
 
     body {
-      margin: 0;
-      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Helvetica, Arial, sans-serif;
       background-color: var(--white);
       color: var(--black);
       line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
     }
 
     .container {
@@ -36,197 +56,513 @@
       font-family: 'Playfair Display', serif;
       font-weight: 600;
       letter-spacing: 0.5px;
+      line-height: 1.2;
     }
 
     h1 {
-      font-size: 2.8rem;
+      font-size: clamp(2rem, 5vw, 2.8rem);
       margin-bottom: 24px;
     }
 
     h2 {
-      font-size: 1.9rem;
+      font-size: clamp(1.5rem, 4vw, 1.9rem);
       margin-bottom: 32px;
     }
 
     p {
       font-size: 1.05rem;
       margin-bottom: 18px;
-      color: #222;
+      color: var(--text-gray);
+      line-height: 1.8;
     }
 
+    /* Hero Section */
     .hero {
       text-align: center;
-      padding: 140px 24px;
-      background-color: var(--white);
+      padding: 140px 24px 120px;
+      background: linear-gradient(to bottom, var(--white) 0%, #FAFAFA 100%);
     }
 
     .hero span {
       display: block;
       font-size: 0.8rem;
-      letter-spacing: 2px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--beige);
+      color: var(--gold);
       margin-bottom: 18px;
+      font-weight: 500;
     }
 
+    .hero h1 {
+      max-width: 800px;
+      margin: 0 auto 24px;
+    }
+
+    .hero p {
+      max-width: 700px;
+      margin: 0 auto 40px;
+      font-size: 1.1rem;
+    }
+
+    /* CTA Button */
     .cta {
       display: inline-block;
-      margin-top: 40px;
-      padding: 16px 42px;
-      border: 1px solid var(--black);
+      margin-top: 20px;
+      padding: 18px 48px;
+      background-color: var(--black);
+      color: var(--white);
       text-decoration: none;
-      color: var(--black);
-      font-size: 0.9rem;
-      letter-spacing: 1px;
+      font-size: 0.85rem;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      transition: all 0.3s ease;
+      transition: all 0.4s ease;
+      border: 2px solid var(--black);
+      font-weight: 500;
     }
 
     .cta:hover {
+      background-color: transparent;
+      color: var(--black);
+      transform: translateY(-2px);
+      box-shadow: 0 8px 24px rgba(0,0,0,0.12);
+    }
+
+    /* Social Proof */
+    .social-proof {
+      background-color: var(--beige);
+      padding: 60px 24px;
+      text-align: center;
+    }
+
+    .social-proof-content {
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .social-proof h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      margin-bottom: 24px;
+      color: var(--black);
+    }
+
+    .stats {
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 40px;
+      margin-top: 40px;
+    }
+
+    .stat-item {
+      flex: 1;
+      min-width: 150px;
+    }
+
+    .stat-number {
+      font-family: 'Playfair Display', serif;
+      font-size: 2.5rem;
+      font-weight: 600;
+      color: var(--black);
+      display: block;
+      margin-bottom: 8px;
+    }
+
+    .stat-label {
+      font-size: 0.9rem;
+      color: var(--text-gray);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Divider */
+    .divider {
+      width: 80px;
+      height: 2px;
+      background-color: var(--gold);
+      margin: 80px auto;
+    }
+
+    /* Method Section */
+    .method-step {
+      margin-bottom: 48px;
+      padding-left: 20px;
+      border-left: 3px solid var(--gold);
+      transition: transform 0.3s ease;
+    }
+
+    .method-step:hover {
+      transform: translateX(8px);
+    }
+
+    .method-step strong {
+      display: block;
+      font-size: 1.15rem;
+      margin-bottom: 12px;
+      color: var(--black);
+      font-weight: 500;
+    }
+
+    /* Benefits Section */
+    .benefits {
+      background-color: #FAFAFA;
+      padding: 80px 24px;
+      margin: 80px 0;
+    }
+
+    .benefits-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 40px;
+      max-width: 960px;
+      margin: 0 auto;
+    }
+
+    .benefit-card {
+      text-align: center;
+      padding: 32px 24px;
+    }
+
+    .benefit-icon {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      display: block;
+    }
+
+    .benefit-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      margin-bottom: 16px;
+      color: var(--black);
+    }
+
+    .benefit-card p {
+      font-size: 0.95rem;
+      line-height: 1.6;
+    }
+
+    /* Testimonial */
+    .testimonial {
       background-color: var(--black);
       color: var(--white);
+      padding: 80px 24px;
+      text-align: center;
     }
 
-    .divider {
-      width: 60px;
-      height: 1px;
-      background-color: var(--gold);
-      margin: 60px 0;
+    .testimonial-content {
+      max-width: 700px;
+      margin: 0 auto;
     }
 
-    .method-step {
-      margin-bottom: 40px;
+    .testimonial-quote {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.4rem;
+      line-height: 1.8;
+      color: var(--white);
+      margin-bottom: 32px;
+      font-style: italic;
     }
 
+    .testimonial-author {
+      font-size: 0.9rem;
+      color: var(--gold);
+      letter-spacing: 1px;
+    }
+
+    /* Footer */
     footer {
       background-color: var(--black);
       color: var(--white);
       text-align: center;
-      padding: 80px 24px;
+      padding: 80px 24px 60px;
     }
 
     footer p {
       color: var(--white);
       font-size: 0.95rem;
+      margin-bottom: 12px;
     }
 
     footer a {
       color: var(--gold);
       text-decoration: none;
+      transition: opacity 0.3s ease;
+    }
+
+    footer a:hover {
+      opacity: 0.8;
     }
 
     .tagline {
       font-family: 'Playfair Display', serif;
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       color: var(--gold);
-      margin-top: 30px;
+      margin-top: 40px;
+      letter-spacing: 2px;
+    }
+
+    .footer-links {
+      margin-top: 40px;
+      padding-top: 40px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+    }
+
+    .footer-links a {
+      margin: 0 16px;
+      font-size: 0.85rem;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .container {
+        padding: 60px 20px;
+      }
+
+      .hero {
+        padding: 100px 20px 80px;
+      }
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      h2 {
+        font-size: 1.5rem;
+      }
+
+      .stats {
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .cta {
+        padding: 16px 36px;
+        font-size: 0.8rem;
+      }
+
+      .benefits-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .hero, .container section {
+      animation: fadeInUp 0.8s ease-out;
+    }
+
+    /* Accessibility */
+    .cta:focus {
+      outline: 3px solid var(--gold);
+      outline-offset: 4px;
+    }
+
+    /* Print Styles */
+    @media print {
+      .cta {
+        display: none;
+      }
     }
   </style>
+
 </head>
 
 <body>
 
   <!-- HERO -->
+
   <section class="hero">
-    <span>Conseil immobilier premium</span>
+    <span>Conseil Immobilier Premium</span>
     <h1>Vendre sans enchaîner<br>les visites inutiles</h1>
     <p>
-      J’accompagne les propriétaires à Paris et dans l’Ouest parisien<br>
-      avec une méthode de sélection rigoureuse, pensée pour protéger<br>
-      leur temps, leur bien et leur décision.
+      J'accompagne les propriétaires à Paris et dans l'Ouest parisien
+      avec une méthode de sélection rigoureuse, pensée pour protéger
+      votre temps, votre bien et votre décision.
     </p>
-    <a class="cta" href="https://calendly.com/sonko/appel?utm_source=site&utm_medium=cta" target="_blank">
+    <a class="cta" href="https://calendly.com/sonko/appel?utm_source=site&utm_medium=cta_hero" target="_blank" rel="noopener noreferrer">
       Prendre rendez-vous
     </a>
   </section>
 
+  <!-- SOCIAL PROOF -->
+
+  <section class="social-proof">
+    <div class="social-proof-content">
+      <h3>Une approche qui fait la différence</h3>
+      <div class="stats">
+        <div class="stat-item">
+          <span class="stat-number">15+</span>
+          <span class="stat-label">Années d'expérience</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">Paris</span>
+          <span class="stat-label">& Ouest Parisien</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-number">100%</span>
+          <span class="stat-label">Accompagnement dédié</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <div class="container">
 
-    <!-- PROBLÈME -->
-    <section>
-      <h2>Le vrai enjeu n’est pas le nombre de visites</h2>
-      <p>
-        Multiplier les visites n’est pas un indicateur de réussite.
-        Bien souvent, cela traduit un manque de cadre, de ciblage
-        ou de stratégie claire.
-      </p>
-      <p>
-        Avec le temps, les doutes s’installent, la fatigue augmente,
-        et le bien perd en attractivité.
-      </p>
-      <div class="divider"></div>
-    </section>
+```
+<!-- PROBLÈME -->
+<section>
+  <h2>Le vrai enjeu n'est pas le nombre de visites</h2>
+  <p>
+    Multiplier les visites n'est pas un indicateur de réussite.
+    Bien souvent, cela traduit un manque de cadre, de ciblage
+    ou de stratégie claire.
+  </p>
+  <p>
+    Avec le temps, les doutes s'installent, la fatigue augmente,
+    et le bien perd en attractivité.
+  </p>
+  <div class="divider"></div>
+</section>
 
-    <!-- POSITIONNEMENT -->
-    <section>
-      <h2>Une posture différente</h2>
-      <p>
-        Mon rôle n’est pas de faire visiter à tout le monde.
-        Il est de sélectionner, structurer et piloter chaque étape
-        avec exigence et discernement.
-      </p>
-      <p>
-        Chaque visite doit avoir une réelle intention et
-        une vraie probabilité d’aboutir.
-      </p>
-      <div class="divider"></div>
-    </section>
-
-    <!-- MÉTHODE -->
-    <section>
-      <h2>Une méthode en cinq étapes</h2>
-
-      <div class="method-step">
-        <strong>1. Cadrage stratégique</strong>
-        <p>Objectif clair, positionnement de prix cohérent et stratégie définie avant toute visite.</p>
-      </div>
-
-      <div class="method-step">
-        <strong>2. Qualification des acquéreurs</strong>
-        <p>Vérification du projet, du budget et du calendrier en amont.</p>
-      </div>
-
-      <div class="method-step">
-        <strong>3. Sélection des visites</strong>
-        <p>Visites ciblées, limitées et cohérentes avec le bien.</p>
-      </div>
-
-      <div class="method-step">
-        <strong>4. Retours structurés</strong>
-        <p>Analyse précise après chaque visite pour guider la décision.</p>
-      </div>
-
-      <div class="method-step">
-        <strong>5. Ajustements maîtrisés</strong>
-        <p>Décisions prises tant que le bien conserve toute son attractivité.</p>
-      </div>
-
-      <p><em>
-        Cette approche ne promet pas l’impossible.<br>
-        Elle garantit une méthode sérieuse, lisible et maîtrisée.
-      </em></p>
-
-      <div class="divider"></div>
-    </section>
-
-    <!-- CTA FINAL -->
-    <section style="text-align:center;">
-      <h2>Échangeons sur votre projet</h2>
-      <p>
-        Un premier échange confidentiel pour évaluer votre situation<br>
-        et déterminer si cette approche est adaptée à votre bien.
-      </p>
-      <a class="cta" href="https://calendly.com/sonko/appel?utm_source=site&utm_medium=cta" target="_blank">
-        Prendre rendez-vous
-      </a>
-    </section>
+<!-- POSITIONNEMENT -->
+<section>
+  <h2>Une posture différente</h2>
+  <p>
+    Mon rôle n'est pas de faire visiter à tout le monde.
+    Il est de sélectionner, structurer et piloter chaque étape
+    avec exigence et discernement.
+  </p>
+  <p>
+    Chaque visite doit avoir une réelle intention et
+    une vraie probabilité d'aboutir.
+  </p>
+</section>
+```
 
   </div>
 
+  <!-- BENEFITS -->
+
+  <section class="benefits">
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <span class="benefit-icon">🎯</span>
+        <h3>Sélection rigoureuse</h3>
+        <p>Qualification systématique des acquéreurs avant toute visite</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">⏱️</span>
+        <h3>Gain de temps</h3>
+        <p>Visites ciblées qui respectent votre emploi du temps</p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-icon">📊</span>
+        <h3>Suivi transparent</h3>
+        <p>Retours structurés après chaque visite pour guider vos décisions</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="container">
+
+```
+<!-- MÉTHODE -->
+<section>
+  <h2>Une méthode en cinq étapes</h2>
+
+  <div class="method-step">
+    <strong>1. Cadrage stratégique</strong>
+    <p>Objectif clair, positionnement de prix cohérent et stratégie définie avant toute visite.</p>
+  </div>
+
+  <div class="method-step">
+    <strong>2. Qualification des acquéreurs</strong>
+    <p>Vérification du projet, du budget et du calendrier en amont.</p>
+  </div>
+
+  <div class="method-step">
+    <strong>3. Sélection des visites</strong>
+    <p>Visites ciblées, limitées et cohérentes avec le bien.</p>
+  </div>
+
+  <div class="method-step">
+    <strong>4. Retours structurés</strong>
+    <p>Analyse précise après chaque visite pour guider la décision.</p>
+  </div>
+
+  <div class="method-step">
+    <strong>5. Ajustements maîtrisés</strong>
+    <p>Décisions prises tant que le bien conserve toute son attractivité.</p>
+  </div>
+
+  <p style="margin-top: 40px;"><em>
+    Cette approche ne promet pas l'impossible.<br>
+    Elle garantit une méthode sérieuse, lisible et maîtrisée.
+  </em></p>
+
+  <div class="divider"></div>
+</section>
+
+<!-- CTA FINAL -->
+<section style="text-align:center;">
+  <h2>Échangeons sur votre projet</h2>
+  <p>
+    Un premier échange confidentiel pour évaluer votre situation
+    et déterminer si cette approche est adaptée à votre bien.
+  </p>
+  <a class="cta" href="https://calendly.com/sonko/appel?utm_source=site&utm_medium=cta_final" target="_blank" rel="noopener noreferrer">
+    Prendre rendez-vous
+  </a>
+</section>
+```
+
+  </div>
+
+  <!-- TESTIMONIAL -->
+
+  <section class="testimonial">
+    <div class="testimonial-content">
+      <p class="testimonial-quote">
+        "Une approche qui change tout. Fini les visites à répétition sans résultat. 
+        Mr SONKO a su cibler les bons profils dès le départ."
+      </p>
+      <p class="testimonial-author">— Client, Issy-les-Moulineaux</p>
+    </div>
+  </section>
+
   <!-- FOOTER -->
+
   <footer>
-    <p>📞 +33 6 26 50 77 61</p>
-    <p class="tagline">Sérénité. Élégance. Résultat.</p>
+    <p><strong>LEPER SONKO</strong> | Conseil Immobilier</p>
+    <p>📞 <a href="tel:+33626507761">+33 6 26 50 77 61</a></p>
+    <p>📧 <a href="mailto:andre.sonko@expfrance.fr">andre.sonko@expfrance.fr</a></p>
+    <p>🌐 <a href="https://www.lepersonko.com" target="_blank" rel="noopener noreferrer">www.lepersonko.com</a></p>
+
+```
+<p class="tagline">✨ Sérénité. Élégance. Résultat.</p>
+
+<div class="footer-links">
+  <a href="#mentions">Mentions légales</a>
+  <a href="#confidentialite">Confidentialité</a>
+</div>
+
+<p style="margin-top: 40px; font-size: 0.8rem; opacity: 0.7;">
+  © 2024 LEPER SONKO. Tous droits réservés.
+</p>
+```
+
   </footer>
 
 </body>
