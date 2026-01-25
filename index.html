@@ -1,605 +1,233 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEPER SONKO - Conseils en Immobilier</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+  <meta charset="UTF-8">
+  <title>LEPER SONKO | Conseil Immobilier</title>
+  <meta name="description" content="Vendre sans enchaîner les visites inutiles. Conseil immobilier premium à Paris et dans l’Ouest parisien.">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        :root {
-            --background: #fdfcfb;
-            --foreground: #3f3f3f;
-            --card: #ffffff;
-            --card-foreground: #3f3f3f;
-            --muted: #ebe8e3;
-            --muted-foreground: #8b8b8b;
-            --accent: #d4a574;
-            --accent-foreground: #3f3f3f;
-            --border: #ebe8e3;
-            --radius: 0.65rem;
-        }
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
-            color: var(--foreground);
-            line-height: 1.6;
-        }
+  <style>
+    :root {
+      --black: #000000;
+      --white: #FFFFFF;
+      --beige: #D2B48C;
+      --gray: #D9D9D9;
+      --gold: #F7E7CE;
+    }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
+    body {
+      margin: 0;
+      font-family: 'Inter', Helvetica, Arial, sans-serif;
+      background-color: var(--white);
+      color: var(--black);
+      line-height: 1.7;
+    }
 
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
+    .container {
+      max-width: 960px;
+      margin: auto;
+      padding: 100px 24px;
+    }
 
-        button {
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-family: inherit;
-        }
+    h1, h2 {
+      font-family: 'Playfair Display', serif;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
 
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            transition: all 0.3s ease;
-            background: transparent;
-        }
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 24px;
+    }
 
-        nav.scrolled {
-            background: rgba(253, 252, 251, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
+    h2 {
+      font-size: 1.9rem;
+      margin-bottom: 32px;
+    }
 
-        .nav-container {
-            max-width: 1280px;
-            margin: 0 auto;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+    p {
+      font-size: 1.05rem;
+      margin-bottom: 18px;
+      color: #222;
+    }
 
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--foreground);
-        }
+    .hero {
+      text-align: center;
+      padding: 140px 24px;
+      background-color: var(--white);
+    }
 
-        .nav-menu {
-            display: none;
-            gap: 2rem;
-        }
+    .hero span {
+      display: block;
+      font-size: 0.8rem;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--beige);
+      margin-bottom: 18px;
+    }
 
-        .nav-menu.active {
-            display: flex;
-        }
+    .cta {
+      display: inline-block;
+      margin-top: 40px;
+      padding: 16px 42px;
+      border: 1px solid var(--black);
+      text-decoration: none;
+      color: var(--black);
+      font-size: 0.9rem;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: all 0.3s ease;
+    }
 
-        .nav-menu button {
-            font-size: 0.875rem;
-            transition: color 0.3s ease;
-        }
+    .cta:hover {
+      background-color: var(--black);
+      color: var(--white);
+    }
 
-        .nav-menu button:hover {
-            color: var(--accent);
-        }
+    .divider {
+      width: 60px;
+      height: 1px;
+      background-color: var(--gold);
+      margin: 60px 0;
+    }
 
-        @media (min-width: 768px) {
-            .nav-menu {
-                display: flex;
-            }
-        }
+    .method-step {
+      margin-bottom: 40px;
+    }
 
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding-top: 5rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
-            position: relative;
-            overflow: hidden;
-        }
+    footer {
+      background-color: var(--black);
+      color: var(--white);
+      text-align: center;
+      padding: 80px 24px;
+    }
 
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            right: 0;
-            width: 24rem;
-            height: 24rem;
-            background: rgba(212, 165, 116, 0.05);
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-        }
+    footer p {
+      color: var(--white);
+      font-size: 0.95rem;
+    }
 
-        .hero::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 24rem;
-            height: 24rem;
-            background: rgba(212, 165, 116, 0.05);
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
-        }
+    footer a {
+      color: var(--gold);
+      text-decoration: none;
+    }
 
-        .hero-content {
-            max-width: 56rem;
-            margin: 0 auto;
-            text-align: center;
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        .hero-title {
-            font-size: 3.75rem;
-            font-weight: bold;
-            line-height: 1.2;
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero-title {
-                font-size: 4.5rem;
-            }
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--muted-foreground);
-            font-weight: 300;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero-subtitle {
-                font-size: 1.875rem;
-            }
-        }
-
-        .hero-tagline {
-            font-size: 1.25rem;
-            color: var(--muted-foreground);
-            max-width: 42rem;
-            margin: 0 auto 1.5rem;
-        }
-
-        .hero-description {
-            font-size: 1.125rem;
-            color: var(--muted-foreground);
-            max-width: 42rem;
-            margin: 0 auto 2rem;
-            font-style: italic;
-        }
-
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-            transition: color 0.3s ease;
-            animation: bounce 2s infinite;
-            margin-top: 2rem;
-        }
-
-        .hero-cta:hover {
-            color: rgba(212, 165, 116, 0.8);
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 1rem;
-        }
-
-        section.bg-card {
-            background-color: var(--card);
-        }
-
-        .section-container {
-            max-width: 48rem;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: bold;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 3rem;
-            }
-        }
-
-        .section-content {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-        }
-
-        .section-content p {
-            font-size: 1.125rem;
-            color: var(--muted-foreground);
-            line-height: 1.8;
-        }
-
-        .accent-text {
-            color: var(--accent);
-            font-weight: 600;
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
-        }
-
-        @media (min-width: 768px) {
-            .contact-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .contact-card {
-            padding: 2rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
-            transition: all 0.3s ease;
-        }
-
-        .contact-card:hover {
-            border-color: var(--accent);
-            background-color: rgba(212, 165, 116, 0.05);
-        }
-
-        .contact-card-title {
-            font-weight: 600;
-            color: var(--foreground);
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card-content {
-            color: var(--muted-foreground);
-            transition: color 0.3s ease;
-        }
-
-        .contact-card:hover .contact-card-content {
-            color: var(--accent);
-        }
-
-        .contact-cta {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: var(--accent);
-            color: var(--accent-foreground);
-            border-radius: var(--radius);
-            font-weight: 600;
-            transition: background-color 0.3s ease;
-            text-align: center;
-        }
-
-        .contact-cta:hover {
-            background-color: rgba(212, 165, 116, 0.9);
-        }
-
-        .contact-cta-container {
-            text-align: center;
-            margin: 2rem 0;
-        }
-
-        /* Footer */
-        footer {
-            padding: 3rem 1rem;
-            background-color: var(--card);
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-container {
-            max-width: 48rem;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--foreground);
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-subtitle {
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links {
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-            margin-bottom: 1rem;
-        }
-
-        @media (min-width: 768px) {
-            .footer-links {
-                flex-direction: row;
-                justify-content: center;
-                gap: 1rem;
-            }
-        }
-
-        .footer-links a {
-            transition: color 0.3s ease;
-        }
-
-        .footer-links a:hover {
-            color: var(--accent);
-        }
-
-        .footer-divider {
-            display: none;
-        }
-
-        @media (min-width: 768px) {
-            .footer-divider {
-                display: inline;
-            }
-        }
-
-        .footer-copyright {
-            font-size: 0.75rem;
-            color: var(--muted-foreground);
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-            margin-top: 1rem;
-        }
-
-        /* Utilities */
-        .container {
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-
-        @media (min-width: 640px) {
-            .container {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-        }
-
-        @media (min-width: 1024px) {
-            .container {
-                padding-left: 2rem;
-                padding-right: 2rem;
-                max-width: 1280px;
-            }
-        }
-    </style>
+    .tagline {
+      font-family: 'Playfair Display', serif;
+      font-size: 1.2rem;
+      color: var(--gold);
+      margin-top: 30px;
+    }
+  </style>
 </head>
+
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <h1 class="nav-logo">LEPER SONKO</h1>
-            <div class="nav-menu" id="navMenu">
-                <button onclick="scrollToSection('acheteurs')">Acheteurs</button>
-                <button onclick="scrollToSection('vendeurs')">Vendeurs</button>
-                <button onclick="scrollToSection('conseillers')">Conseillers</button>
-                <button onclick="scrollToSection('contact')">Contact</button>
-            </div>
-        </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">LEPER SONKO</h1>
-            <p class="hero-subtitle">Conseils en Immobilier</p>
-            <p class="hero-tagline">Ce que personne ne vous dit sur l'immobilier</p>
-            <p class="hero-description">La dimension humaine et émotionnelle derrière chaque décision</p>
-            <button class="hero-cta" onclick="scrollToSection('intro')">
-                <span>↓ Découvrez nos perspectives</span>
-            </button>
-        </div>
+  <!-- HERO -->
+  <section class="hero">
+    <span>Conseil immobilier premium</span>
+    <h1>Vendre sans enchaîner<br>les visites inutiles</h1>
+    <p>
+      J’accompagne les propriétaires à Paris et dans l’Ouest parisien<br>
+      avec une méthode de sélection rigoureuse, pensée pour protéger<br>
+      leur temps, leur bien et leur décision.
+    </p>
+    <a class="cta" href="https://calendly.com/sonko/appel?utm_source=site&utm_medium=cta" target="_blank">
+      Prendre rendez-vous
+    </a>
+  </section>
+
+  <div class="container">
+
+    <!-- PROBLÈME -->
+    <section>
+      <h2>Le vrai enjeu n’est pas le nombre de visites</h2>
+      <p>
+        Multiplier les visites n’est pas un indicateur de réussite.
+        Bien souvent, cela traduit un manque de cadre, de ciblage
+        ou de stratégie claire.
+      </p>
+      <p>
+        Avec le temps, les doutes s’installent, la fatigue augmente,
+        et le bien perd en attractivité.
+      </p>
+      <div class="divider"></div>
     </section>
 
-    <!-- Introduction Section -->
-    <section id="intro" class="bg-card">
-        <div class="section-container">
-            <h2 class="section-title">L'immobilier, c'est une histoire humaine</h2>
-            <div class="section-content">
-                <p>Cette série vise à montrer la dimension humaine et émotionnelle de l'immobilier. L'objectif n'est pas de vendre, mais de créer de la confiance et d'éduquer. L'immobilier, ce ne sont pas seulement des mètres carrés, des prix ou des taux. C'est un miroir des émotions, des choix et des moments de vie. Chaque décision immobilière raconte une histoire, souvent plus profonde que ce que l'on imagine.</p>
-            </div>
-        </div>
+    <!-- POSITIONNEMENT -->
+    <section>
+      <h2>Une posture différente</h2>
+      <p>
+        Mon rôle n’est pas de faire visiter à tout le monde.
+        Il est de sélectionner, structurer et piloter chaque étape
+        avec exigence et discernement.
+      </p>
+      <p>
+        Chaque visite doit avoir une réelle intention et
+        une vraie probabilité d’aboutir.
+      </p>
+      <div class="divider"></div>
     </section>
 
-    <!-- Acheteurs Section -->
-    <section id="acheteurs">
-        <div class="section-container">
-            <h2 class="section-title">Pour les Acheteurs</h2>
-            <div class="section-content">
-                <p><span class="accent-text">Vous savez ce que personne ne vous dit sur l'achat immobilier ?</span> C'est qu'il n'y aura jamais de bon moment. Et c'est exactement pour ça que c'est toujours le bon moment.</p>
+    <!-- MÉTHODE -->
+    <section>
+      <h2>Une méthode en cinq étapes</h2>
 
-                <p>J'ai vu des dizaines d'acheteurs attendre que les taux baissent. D'autres, que les prix chutent. Mais dans ce marché, quand les taux baissent, les prix montent. Et quand les prix baissent, les taux remontent. Résultat : on attend un équilibre qui n'existe pas. Pendant ce temps, on paye un loyer. 800 euros, 900, parfois plus. Et surtout, on paye un prix plus lourd : celui du temps qui passe.</p>
+      <div class="method-step">
+        <strong>1. Cadrage stratégique</strong>
+        <p>Objectif clair, positionnement de prix cohérent et stratégie définie avant toute visite.</p>
+      </div>
 
-                <p>Mais la vraie raison, ce n'est ni le taux, ni le prix. C'est la peur. Peur de se tromper. Peur de s'engager. Peur de s'enfermer dans un endroit qui ne nous ressemble plus. Et cette peur, elle gèle tout. Elle met la vie sur pause. <span class="accent-text">Le bon moment pour acheter, ce n'est pas quand le marché est prêt. C'est quand VOUS, vous l'êtes.</span></p>
+      <div class="method-step">
+        <strong>2. Qualification des acquéreurs</strong>
+        <p>Vérification du projet, du budget et du calendrier en amont.</p>
+      </div>
 
-                <p>La peur d'acheter n'est pas un défaut, c'est sain. On n'achète pas un bien, on achète une part de soi. Certains veulent se convaincre que c'est un investissement rationnel. Mais personne ne signe un contrat de vie sans émotion. L'achat immobilier, c'est un pari sur votre futur vous. Et si ce futur vous fait peur, c'est peut-être le signe que vous êtes en train de grandir.</p>
+      <div class="method-step">
+        <strong>3. Sélection des visites</strong>
+        <p>Visites ciblées, limitées et cohérentes avec le bien.</p>
+      </div>
 
-                <p>Le coup de cœur n'est pas magique. C'est un mélange subtil de lumière, d'odeurs et de résonances intérieures. Un lieu peut sembler imparfait et pourtant vous toucher profondément. Vous ne cherchez pas seulement un toit. Vous cherchez un écho, un endroit qui résonne avec votre histoire.</p>
+      <div class="method-step">
+        <strong>4. Retours structurés</strong>
+        <p>Analyse précise après chaque visite pour guider la décision.</p>
+      </div>
 
-                <p>On nous vend l'idée que devenir propriétaire, c'est « réussir sa vie ». Mais l'achat n'est pas un diplôme social. C'est une intimité à bâtir. Certains achètent pour se prouver qu'ils ont réussi. Les plus heureux, eux, achètent pour se sentir enfin à leur place.</p>
+      <div class="method-step">
+        <strong>5. Ajustements maîtrisés</strong>
+        <p>Décisions prises tant que le bien conserve toute son attractivité.</p>
+      </div>
 
-                <p>Quand on parle d'achat, on pense souvent au prix au mètre carré. Mais ce que vous payez, ce n'est pas du béton. <span class="accent-text">C'est une liberté.</span> La liberté de ne plus dépendre d'un propriétaire, d'un préavis ou d'un bail. La liberté de repeindre un mur, d'aménager à votre goût. C'est la liberté d'écrire votre histoire chez vous.</p>
-            </div>
-        </div>
+      <p><em>
+        Cette approche ne promet pas l’impossible.<br>
+        Elle garantit une méthode sérieuse, lisible et maîtrisée.
+      </em></p>
+
+      <div class="divider"></div>
     </section>
 
-    <!-- Vendeurs Section -->
-    <section id="vendeurs" class="bg-card">
-        <div class="section-container">
-            <h2 class="section-title">Pour les Vendeurs</h2>
-            <div class="section-content">
-                <p>On me demande souvent : « C'est le bon moment pour vendre ? » Et je réponds toujours la même chose : il n'existe pas. Vendre, ce n'est pas une équation de marché. <span class="accent-text">C'est une page qui se tourne.</span> On attend la bonne conjoncture, la bonne offre, le bon acheteur… Mais derrière chaque attente, il y a souvent une hésitation plus intime : celle d'accepter que quelque chose se termine.</p>
-
-                <p>Un bien ne se vend jamais au bon moment. Il se vend quand on est prêt à dire au revoir.</p>
-
-                <p>Chaque logement a une histoire. Rires, disputes, anniversaires, absences… tout cela se ressent dans l'air. Le prix ne reflète jamais uniquement la pierre. Il reflète la mémoire, les émotions. Vendre, c'est accepter de laisser un autre écrire la suite.</p>
-
-                <p>Le vrai prix d'une vente n'est pas seulement financier. C'est celui qui vous permet de dormir tranquille. Le jour où vous vous dites : « Oui, je peux passer à autre chose », c'est le vrai moment de vendre. Même si ce n'est pas l'offre la plus haute. Même si ce n'est pas le marché idéal.</p>
-
-                <p>Vendre, ce n'est pas quitter des murs, c'est quitter une époque de sa vie. La maison où on a grandi, où les enfants sont partis, où les habitudes se sont enracinées. Accepter de vendre, c'est accepter de changer.</p>
-
-                <p>On peut avoir les plus belles photos et arguments, mais un bien se vend d'abord par l'émotion. L'acheteur n'achète pas des mètres carrés, il achète une projection de sa vie. L'éclairage, la lumière, l'accueil, l'atmosphère… tout compte.</p>
-            </div>
-        </div>
+    <!-- CTA FINAL -->
+    <section style="text-align:center;">
+      <h2>Échangeons sur votre projet</h2>
+      <p>
+        Un premier échange confidentiel pour évaluer votre situation<br>
+        et déterminer si cette approche est adaptée à votre bien.
+      </p>
+      <a class="cta" href="https://calendly.com/sonko/appel?utm_source=site&utm_medium=cta" target="_blank">
+        Prendre rendez-vous
+      </a>
     </section>
 
-    <!-- Conseillers Section -->
-    <section id="conseillers">
-        <div class="section-container">
-            <h2 class="section-title">Pour les Conseillers</h2>
-            <div class="section-content">
-                <p>Il y a toujours une chose que le client ne dit pas. Ce n'est pas qu'il la cache, c'est qu'il ne sait pas comment la formuler. Une séparation qui s'annonce. Un prêt qui étouffe. Une peur d'être jugé. Ou juste cette honte d'avoir besoin de vendre.</p>
+  </div>
 
-                <p><span class="accent-text">Notre métier commence à l'endroit précis où les mots s'arrêtent.</span> Écouter, vraiment écouter, ce n'est pas entendre le besoin. C'est comprendre ce qu'il y a derrière. Parce que parfois, ce qu'un client veut, ce n'est pas vendre vite. C'est être compris doucement.</p>
+  <!-- FOOTER -->
+  <footer>
+    <p>📞 +33 6 26 50 77 61</p>
+    <p class="tagline">Sérénité. Élégance. Résultat.</p>
+  </footer>
 
-                <p>Les gens pensent qu'on vend des biens. En réalité, on accompagne des vies. Des départs, des débuts, des deuils, des renaissances. Notre mission n'est pas une signature, mais une transition.</p>
-
-                <p>L'écoute peut épuiser. Visages fermés, tensions, urgences, appels tardifs… Mais c'est elle qui fait la différence. Pas en chiffres, mais en confiance. Et cette confiance, elle ne se signe pas. Elle se ressent.</p>
-
-                <p>Même après des années, le doute reste. Douter de soi, de ses choix, de sa capacité à aider. Mais le doute garde notre humanité. <span class="accent-text">Un conseiller sans doute est un vendeur. Un conseiller avec doute est un guide.</span></p>
-
-                <p>Ce métier use, car on prend les émotions des autres en plein cœur. Mais il élève aussi, car on devient témoin de moments vrais : adieux, départs, recommencements. Fait avec bienveillance, il transforme aussi notre manière de vivre.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Conclusion Section -->
-    <section class="bg-card">
-        <div class="section-container">
-            <h2 class="section-title">Ce que personne ne vous dit</h2>
-            <div class="section-content">
-                <p>Ce que personne ne vous dit sur l'immobilier, ce n'est pas qu'il s'agit de vendre ou d'acheter. Il s'agit d'aider les gens à traverser une étape. À comprendre ce qu'ils quittent, ce qu'ils cherchent, et parfois ce qu'ils fuient. L'immobilier n'est pas un secteur, c'est un miroir. Un miroir des émotions les plus simples : peur, sécurité, besoin d'appartenance. Et ceux qui choisissent d'en faire leur métier deviennent les passeurs silencieux de ces émotions.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-container">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 class="section-title">Parlons de votre projet</h2>
-                <p style="font-size: 1.125rem; color: var(--muted-foreground);">Contactez-moi pour discuter de vos besoins en conseils immobiliers</p>
-            </div>
-
-            <div class="contact-grid">
-                <a href="tel:+33626507761" class="contact-card">
-                    <div class="contact-card-title">📞 Téléphone</div>
-                    <div class="contact-card-content">+33 6 26 50 77 61</div>
-                </a>
-
-                <a href="mailto:andre.sonko@expfrance.fr" class="contact-card">
-                    <div class="contact-card-title">✉️ Email</div>
-                    <div class="contact-card-content">andre.sonko@expfrance.fr</div>
-                </a>
-            </div>
-
-            <div class="contact-cta-container">
-                <button class="contact-cta" onclick="window.location.href='tel:+33626507761'">M'appeler maintenant</button>
-            </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <h3 class="footer-title">LEPER SONKO</h3>
-            <p class="footer-subtitle">Conseils en Immobilier - La dimension humaine de vos décisions</p>
-
-            <div class="footer-links">
-                <a href="tel:+33626507761">+33 6 26 50 77 61</a>
-                <span class="footer-divider">•</span>
-                <a href="mailto:andre.sonko@expfrance.fr">andre.sonko@expfrance.fr</a>
-            </div>
-
-            <div class="footer-copyright">
-                <p>© 2025 LEPER SONKO. Tous droits réservés.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Navigation scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
-
-        // Smooth scroll to section
-        function scrollToSection(id) {
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    </script>
 </body>
 </html>
-
