@@ -1127,6 +1127,33 @@
     .footer-bottom { flex-direction: column; text-align: center; }
   }
 
+
+  .form-error {
+    display: none;
+    background: rgba(192,57,43,0.12);
+    border: 1px solid rgba(192,57,43,0.4);
+    color: #e74c3c;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    margin-top: 16px;
+    line-height: 1.5;
+  }
+  .form-error.visible { display: block; animation: panelIn 0.3s ease; }
+
+
+  .form-error {
+    display: none;
+    background: rgba(192,57,43,0.12);
+    border-left: 3px solid #e74c3c;
+    color: #e74c3c;
+    padding: 12px 16px;
+    font-size: 0.82rem;
+    margin-top: 16px;
+    line-height: 1.5;
+    border-radius: 0;
+  }
+  .form-error.visible { display: block; animation: panelIn 0.3s ease; }
+
   /* Utility */
   .text-gold { color: var(--gold); }
   .mt-12 { margin-top: 12px; }
@@ -1850,33 +1877,53 @@ const top = section.getBoundingClientRect().top + window.pageYOffset - 0;
 window.scrollTo({ top: top, behavior: ‘smooth’ });
 }
 
+function showError(panelNum, msg) {
+let errEl = document.getElementById(‘error-p’ + panelNum);
+if (!errEl) {
+errEl = document.createElement(‘div’);
+errEl.id = ‘error-p’ + panelNum;
+errEl.className = ‘form-error’;
+const nav = document.querySelector(’#panel’ + panelNum + ’ .form-nav’);
+if (nav) nav.parentNode.insertBefore(errEl, nav);
+}
+errEl.textContent = msg;
+errEl.classList.add(‘visible’);
+errEl.scrollIntoView({ behavior: ‘smooth’, block: ‘center’ });
+}
+
+function clearError(panelNum) {
+const errEl = document.getElementById(‘error-p’ + panelNum);
+if (errEl) errEl.classList.remove(‘visible’);
+}
+
 function validatePanel(panelNum) {
+clearError(panelNum);
 if (panelNum === 1) {
 const type = document.querySelector(‘input[name=“type_bien”]:checked’);
 const ville = document.getElementById(‘ville’).value;
 const cp = document.getElementById(‘cp’).value;
-if (!type) { alert(‘Veuillez sélectionner le type de bien.’); return false; }
-if (!ville) { alert(‘Veuillez sélectionner une ville.’); return false; }
-if (!cp) { alert(‘Veuillez saisir le code postal.’); return false; }
+if (!type)  { showError(1, ‘→ Veuillez sélectionner le type de bien (Appartement, Maison…)’); return false; }
+if (!ville) { showError(1, ‘→ Veuillez sélectionner une ville dans la liste.’); return false; }
+if (!cp)    { showError(1, ‘→ Veuillez saisir le code postal.’); return false; }
 }
 if (panelNum === 2) {
 const surface = document.getElementById(‘surface’).value;
-const pieces = document.getElementById(‘pieces’).value;
-if (!surface || surface < 5) { alert(‘Veuillez saisir une surface valide.’); return false; }
-if (!pieces) { alert(‘Veuillez sélectionner le nombre de pièces.’); return false; }
+const pieces  = document.getElementById(‘pieces’).value;
+if (!surface || surface < 5) { showError(2, ‘→ Veuillez saisir une surface habitable valide (en m²).’); return false; }
+if (!pieces)                  { showError(2, ‘→ Veuillez sélectionner le nombre de pièces.’); return false; }
 }
 if (panelNum === 3) {
 const etat = document.querySelector(‘input[name=“etat”]:checked’);
-if (!etat) { alert(‘Veuillez indiquer l'état général du bien.’); return false; }
+if (!etat) { showError(3, “→ Veuillez indiquer l’état général du bien.”); return false; }
 }
 if (panelNum === 5) {
 const prenom = document.getElementById(‘prenom’).value.trim();
-const nom = document.getElementById(‘nom’).value.trim();
-const email = document.getElementById(‘email’).value.trim();
-const gdpr = document.getElementById(‘gdpr’).checked;
-if (!prenom || !nom) { alert(‘Veuillez saisir votre nom complet.’); return false; }
-if (!email || !email.includes(’@’)) { alert(‘Veuillez saisir une adresse e-mail valide.’); return false; }
-if (!gdpr) { alert(‘Veuillez accepter les conditions de traitement des données pour continuer.’); return false; }
+const nom    = document.getElementById(‘nom’).value.trim();
+const email  = document.getElementById(‘email’).value.trim();
+const gdpr   = document.getElementById(‘gdpr’).checked;
+if (!prenom || !nom)          { showError(5, ‘→ Veuillez saisir votre prénom et nom.’); return false; }
+if (!email || !email.includes(’@’)) { showError(5, ‘→ Veuillez saisir une adresse e-mail valide.’); return false; }
+if (!gdpr)                    { showError(5, ‘→ Veuillez cocher la case de consentement pour continuer.’); return false; }
 }
 return true;
 }
@@ -1992,7 +2039,7 @@ emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, data)
     console.error('EmailJS error:', err);
     btn.textContent = 'Recevoir mon estimation →';
     btn.disabled = false;
-    alert('Une erreur est survenue lors de l\'envoi. Veuillez réessayer ou contacter directement andre.sonko@expfrance.fr');
+    showError(5, 'Erreur d\'envoi. Vérifiez votre connexion ou écrivez directement à andre.sonko@expfrance.fr');
   });
 ```
 
