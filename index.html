@@ -52,8 +52,6 @@
 }
 </script>
 
-<script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
-
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 
@@ -1946,74 +1944,49 @@ if (wrap) wrap.style.display = hasExt ? ‘block’ : ‘none’;
 });
 });
 
-// ── EMAILJS CONFIG ──
-// Remplacez ces 3 valeurs par vos clés EmailJS
-const EMAILJS_PUBLIC_KEY  = ‘MKGAz_uobENgjKau_’;   // ex: ‘abc123XYZ’
-const EMAILJS_SERVICE_ID  = ‘service_xbqgjtt’;   // ex: ‘service_xxxxxxx’
-const EMAILJS_TEMPLATE_ID = ‘template_iuuf57m’;  // ex: ‘template_xxxxxxx’
-
-emailjs.init({ publicKey: EMAILJS_PUBLIC_KEY });
-
 function collectFormData() {
-const getVal  = id => { const el = document.getElementById(id); return el ? el.value : ‘’; };
-const getRadio = name => { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : ‘’; };
-const getChecks = ids => ids.map(id => { const el = document.getElementById(id); return el && el.checked ? el.value : ‘’; }).filter(Boolean).join(’, ’);
-
-```
+const getVal   = id => { const el = document.getElementById(id); return el ? (el.value || ‘’) : ‘’; };
+const getRadio = name => { const el = document.querySelector(`input[name="${name}"]:checked`); return el ? el.value : ‘—’; };
+const getChecks = ids => ids.map(id => { const el = document.getElementById(id); return el && el.checked ? el.value : ‘’; }).filter(Boolean).join(’, ’) || ‘—’;
 return {
-  // Identité client
-  client_prenom:    getVal('prenom'),
-  client_nom:       getVal('nom'),
-  client_email:     getVal('email'),
-  client_tel:       getVal('telephone'),
-  client_source:    getVal('source'),
-
-  // Bien
-  type_bien:        getRadio('type_bien'),
-  ville:            getVal('ville'),
-  adresse:          getVal('adresse'),
-  cp:               getVal('cp'),
-  etage:            getVal('etage'),
-
-  // Surface
-  surface:          getVal('surface'),
-  pieces:           getVal('pieces'),
-  chambres:         getVal('chambres'),
-  sdb:              getVal('sdb'),
-  exterieurs:       getChecks(['ext_balcon','ext_terrasse','ext_jardin','ext_cour','ext_none']),
-  surface_ext:      getVal('terrasse_surface'),
-  parking:          getRadio('parking'),
-  cave:             getRadio('cave'),
-  orientation:      getRadio('orientation'),
-
-  // État & travaux
-  etat:             getRadio('etat'),
-  travaux:          getRadio('travaux'),
-  annee_travaux:    getVal('annee_travaux'),
-  cout_travaux:     getVal('cout_travaux'),
-  nature_travaux:   getChecks(['trav_cuisine','trav_sdb','trav_sols','trav_elec','trav_plomb','trav_fenetres','trav_chauffage','trav_toiture','trav_complet']),
-  factures:         getRadio('factures'),
-  dpe:              getVal('dpe'),
-  chauffage:        getVal('chauffage'),
-  etat_details:     getVal('etat_details'),
-
-  // Situation vendeur
-  horizon:          getRadio('horizon'),
-  deja_estime:      getRadio('deja_estim'),
-  estim_prec:       getVal('estim_prec'),
-  occupation:       getRadio('occupe'),
-  objectif:         getRadio('objectif'),
-  infos_sup:        getVal('infos_sup'),
-
-  // Photos
-  photos_link:      getVal('photos_link'),
-
-  // Meta
-  date_envoi:       new Date().toLocaleDateString('fr-FR', {day:'2-digit',month:'long',year:'numeric'}),
-  heure_envoi:      new Date().toLocaleTimeString('fr-FR', {hour:'2-digit',minute:'2-digit'}),
+client_prenom:  getVal(‘prenom’),
+client_nom:     getVal(‘nom’),
+client_email:   getVal(‘email’),
+client_tel:     getVal(‘telephone’),
+client_source:  getVal(‘source’),
+type_bien:      getRadio(‘type_bien’),
+ville:          getVal(‘ville’),
+adresse:        getVal(‘adresse’),
+cp:             getVal(‘cp’),
+etage:          getVal(‘etage’),
+surface:        getVal(‘surface’),
+pieces:         getVal(‘pieces’),
+chambres:       getVal(‘chambres’),
+sdb:            getVal(‘sdb’),
+exterieurs:     getChecks([‘ext_balcon’,‘ext_terrasse’,‘ext_jardin’,‘ext_cour’,‘ext_none’]),
+surface_ext:    getVal(‘terrasse_surface’),
+parking:        getRadio(‘parking’),
+cave:           getRadio(‘cave’),
+orientation:    getRadio(‘orientation’),
+etat:           getRadio(‘etat’),
+travaux:        getRadio(‘travaux’),
+annee_travaux:  getVal(‘annee_travaux’),
+cout_travaux:   getVal(‘cout_travaux’),
+nature_travaux: getChecks([‘trav_cuisine’,‘trav_sdb’,‘trav_sols’,‘trav_elec’,‘trav_plomb’,‘trav_fenetres’,‘trav_chauffage’,‘trav_toiture’,‘trav_complet’]),
+factures:       getRadio(‘factures’),
+dpe:            getVal(‘dpe’),
+chauffage:      getVal(‘chauffage’),
+etat_details:   getVal(‘etat_details’),
+horizon:        getRadio(‘horizon’),
+deja_estime:    getRadio(‘deja_estim’),
+estim_prec:     getVal(‘estim_prec’),
+occupation:     getRadio(‘occupe’),
+objectif:       getRadio(‘objectif’),
+infos_sup:      getVal(‘infos_sup’),
+photos_link:    getVal(‘photos_link’),
+date_envoi:     new Date().toLocaleDateString(‘fr-FR’, {day:‘2-digit’, month:‘long’, year:‘numeric’}),
+heure_envoi:    new Date().toLocaleTimeString(‘fr-FR’, {hour:‘2-digit’, minute:‘2-digit’}),
 };
-```
-
 }
 
 function submitForm() {
@@ -2024,23 +1997,84 @@ const btn = document.querySelector('.btn-submit');
 btn.textContent = 'Envoi en cours…';
 btn.disabled = true;
 
-const data = collectFormData();
+const d = collectFormData();
 
-emailjs.send(EMAILJS_SERVICE_ID, EMAILJS_TEMPLATE_ID, data)
-  .then(() => {
+const body = [
+  '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+  'NOUVELLE DEMANDE D ESTIMATION IMMOBILIERE',
+  d.date_envoi + ' a ' + d.heure_envoi,
+  '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+  '',
+  'CLIENT',
+  'Nom          : ' + d.client_prenom + ' ' + d.client_nom,
+  'Email        : ' + d.client_email,
+  'Telephone    : ' + d.client_tel,
+  'Source       : ' + d.client_source,
+  '',
+  'LE BIEN',
+  'Type         : ' + d.type_bien,
+  'Adresse      : ' + d.adresse + ', ' + d.ville + ' ' + d.cp,
+  'Surface      : ' + d.surface + ' m2',
+  'Pieces       : ' + d.pieces,
+  'Chambres     : ' + d.chambres,
+  'Etage        : ' + d.etage,
+  'Orientation  : ' + d.orientation,
+  'Exterieurs   : ' + d.exterieurs + (d.surface_ext ? ' (' + d.surface_ext + ' m2)' : ''),
+  'Parking      : ' + d.parking,
+  'Cave         : ' + d.cave,
+  'DPE          : ' + d.dpe,
+  'Chauffage    : ' + d.chauffage,
+  '',
+  'ETAT ET TRAVAUX',
+  'Etat general : ' + d.etat,
+  'Travaux      : ' + d.travaux,
+  'Nature       : ' + d.nature_travaux,
+  'Annee        : ' + d.annee_travaux,
+  'Cout         : ' + d.cout_travaux + ' EUR',
+  'Factures     : ' + d.factures,
+  'Details      : ' + d.etat_details,
+  '',
+  'SITUATION VENDEUR',
+  'Horizon      : ' + d.horizon,
+  'Occupation   : ' + d.occupation,
+  'Objectif     : ' + d.objectif,
+  'Estim. prec. : ' + d.estim_prec,
+  'Infos        : ' + d.infos_sup,
+  '',
+  'PHOTOS',
+  d.photos_link || 'Non renseigne',
+  '━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━',
+].join('\n');
+
+const formData = new FormData();
+formData.append('_subject', 'Estimation - ' + d.type_bien + ' ' + d.ville + ' - ' + d.client_prenom + ' ' + d.client_nom);
+formData.append('_captcha', 'false');
+formData.append('_template', 'box');
+formData.append('Demande', body);
+
+fetch('https://formsubmit.co/andre.sonko@expfrance.fr', {
+  method: 'POST',
+  body: formData,
+  headers: { 'Accept': 'application/json' }
+})
+.then(res => {
+  if (res.ok) {
     document.getElementById('panel5').classList.remove('active');
     document.getElementById('successPanel').classList.add('active');
-    document.getElementById('successName').textContent = data.client_prenom + ',';
-    document.getElementById('successEmail').textContent = data.client_email;
+    document.getElementById('successName').textContent = d.client_prenom + ',';
+    document.getElementById('successEmail').textContent = d.client_email;
     document.getElementById('wizardProgress').style.display = 'none';
     scrollToForm();
-  })
-  .catch((err) => {
-    console.error('EmailJS error:', err);
-    btn.textContent = 'Recevoir mon estimation →';
-    btn.disabled = false;
-    showError(5, 'Erreur d\'envoi. Vérifiez votre connexion ou écrivez directement à andre.sonko@expfrance.fr');
-  });
+  } else {
+    throw new Error('Status ' + res.status);
+  }
+})
+.catch(err => {
+  console.error('Formsubmit error:', err);
+  btn.textContent = 'Recevoir mon estimation →';
+  btn.disabled = false;
+  alert('Une erreur est survenue. Veuillez reessayer ou ecrire directement a andre.sonko@expfrance.fr');
+});
 ```
 
 }
