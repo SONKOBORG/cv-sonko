@@ -1,873 +1,235 @@
 <!DOCTYPE html>
-
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>LEPER SONKO — Maîtriser le Marché Immobilier Parisien</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=Jost:wght@200;300;400;500;600&display=swap" rel="stylesheet">
-<style>
-  :root {
-    --gold: #C9A961;
-    --gold-light: #E0C882;
-    --gold-dark: #A88840;
-    --black: #0E0E0E;
-    --dark: #141414;
-    --dark2: #1C1C1C;
-    --dark3: #242424;
-    --beige: #DBC8B6;
-    --cream: #F5F0E8;
-    --gray: #888;
-    --lgray: #333;
-    --white: #FAFAFA;
-  }
-
-*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
-
-html { scroll-behavior: smooth; }
-
-body {
-background: var(–black);
-color: var(–white);
-font-family: ‘Jost’, sans-serif;
-font-weight: 300;
-line-height: 1.7;
-overflow-x: hidden;
-}
-
-/* ── SCROLLBAR ──────────────────────────────────────────────────────────── */
-::-webkit-scrollbar { width: 3px; }
-::-webkit-scrollbar-track { background: var(–dark); }
-::-webkit-scrollbar-thumb { background: var(–gold); }
-
-/* ── HEADER ─────────────────────────────────────────────────────────────── */
-header {
-position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-display: flex; align-items: center; justify-content: space-between;
-padding: 20px 48px;
-background: rgba(14,14,14,0.92);
-backdrop-filter: blur(12px);
-border-bottom: 1px solid rgba(201,169,97,0.15);
-}
-
-.logo {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 15px;
-font-weight: 600;
-letter-spacing: 0.2em;
-color: var(–gold);
-text-transform: uppercase;
-}
-
-nav { display: flex; gap: 36px; }
-nav a {
-font-size: 10px; font-weight: 500; letter-spacing: 0.15em;
-text-transform: uppercase; color: var(–gray);
-text-decoration: none; transition: color 0.3s;
-}
-nav a:hover { color: var(–gold); }
-
-/* ── HERO ────────────────────────────────────────────────────────────────── */
-.hero {
-min-height: 100vh;
-display: grid;
-grid-template-columns: 1fr 1fr;
-position: relative;
-overflow: hidden;
-}
-
-.hero-left {
-display: flex; flex-direction: column; justify-content: center;
-padding: 120px 64px 80px 48px;
-position: relative; z-index: 2;
-}
-
-.hero-eyebrow {
-font-size: 10px; font-weight: 500; letter-spacing: 0.25em;
-text-transform: uppercase; color: var(–gold); margin-bottom: 32px;
-display: flex; align-items: center; gap: 16px;
-}
-.hero-eyebrow::before {
-content: ‘’; display: block; width: 40px; height: 1px; background: var(–gold);
-}
-
-.hero-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(48px, 5vw, 72px);
-font-weight: 300; line-height: 1.05;
-color: var(–white); margin-bottom: 8px;
-}
-.hero-title em {
-font-style: italic; color: var(–gold);
-}
-
-.hero-subtitle {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(16px, 2vw, 22px);
-font-weight: 300; color: var(–beige);
-margin-top: 16px; margin-bottom: 48px;
-letter-spacing: 0.04em;
-}
-
-.hero-stats {
-display: flex; gap: 48px; margin-bottom: 56px;
-}
-
-.stat { border-left: 1px solid rgba(201,169,97,0.3); padding-left: 20px; }
-.stat-number {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 40px; font-weight: 600; color: var(–gold);
-line-height: 1;
-}
-.stat-label {
-font-size: 9px; letter-spacing: 0.18em; text-transform: uppercase;
-color: var(–gray); margin-top: 4px;
-}
-
-.hero-cta {
-display: inline-flex; align-items: center; gap: 16px;
-padding: 14px 32px; background: var(–gold); color: var(–black);
-font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-text-decoration: none; transition: all 0.3s; width: fit-content;
-}
-.hero-cta:hover { background: var(–gold-light); transform: translateY(-2px); }
-.hero-cta svg { transition: transform 0.3s; }
-.hero-cta:hover svg { transform: translateX(4px); }
-
-.hero-right {
-position: relative; overflow: hidden;
-}
-.hero-right::before {
-content: ‘’; position: absolute; inset: 0; z-index: 1;
-background: linear-gradient(to right, var(–black) 0%, transparent 30%);
-}
-.hero-right::after {
-content: ‘’; position: absolute; inset: 0; z-index: 1;
-background: linear-gradient(to top, var(–black) 0%, transparent 40%);
-}
-.hero-bg-number {
-position: absolute; right: -20px; top: 50%; transform: translateY(-50%);
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 320px; font-weight: 700; color: rgba(201,169,97,0.04);
-line-height: 1; z-index: 0; pointer-events: none; user-select: none;
-}
-.hero-grid-preview {
-position: absolute; inset: 0; z-index: 2;
-display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-padding: 80px 20px 20px 0;
-opacity: 0.7;
-}
-.preview-card {
-background: var(–dark2);
-border: 1px solid rgba(201,169,97,0.12);
-border-radius: 2px;
-overflow: hidden;
-position: relative;
-transition: all 0.4s;
-cursor: default;
-}
-.preview-card::after {
-content: ‘’; position: absolute; inset: 0;
-background: linear-gradient(to top, rgba(14,14,14,0.8) 0%, transparent 60%);
-}
-.preview-card-ep {
-position: absolute; bottom: 8px; left: 10px; z-index: 2;
-font-size: 8px; font-weight: 600; letter-spacing: 0.15em;
-color: var(–gold); text-transform: uppercase;
-}
-.preview-card-bar {
-position: absolute; top: 0; left: 0; width: 2px; height: 100%; background: var(–gold); z-index: 2;
-}
-
-/* ── GOLD DIVIDER ────────────────────────────────────────────────────────── */
-.section-divider {
-display: flex; align-items: center; gap: 24px;
-margin: 0 48px 80px;
-}
-.section-divider::before, .section-divider::after {
-content: ‘’; flex: 1; height: 1px; background: rgba(201,169,97,0.2);
-}
-.divider-diamond {
-width: 6px; height: 6px; background: var(–gold);
-transform: rotate(45deg); flex-shrink: 0;
-}
-
-/* ── SECTIONS ────────────────────────────────────────────────────────────── */
-section { padding: 120px 48px; }
-
-.section-label {
-font-size: 9px; font-weight: 600; letter-spacing: 0.3em;
-text-transform: uppercase; color: var(–gold);
-display: flex; align-items: center; gap: 16px; margin-bottom: 40px;
-}
-.section-label::after {
-content: ‘’; flex: 0 0 32px; height: 1px; background: var(–gold);
-}
-
-.section-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(36px, 4vw, 56px);
-font-weight: 300; line-height: 1.1;
-margin-bottom: 24px;
-}
-
-/* ── SÉRIE OVERVIEW ──────────────────────────────────────────────────────── */
-#serie { background: var(–dark); }
-
-.serie-intro {
-max-width: 680px;
-font-size: 16px; color: var(–beige); line-height: 1.8;
-margin-bottom: 80px;
-}
-
-.tagline-block {
-border-left: 2px solid var(–gold);
-padding: 16px 24px;
-margin: 32px 0;
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 22px; font-style: italic; color: var(–gold);
-}
-
-/* ── ÉPISODES GRID ───────────────────────────────────────────────────────── */
-#episodes { background: var(–black); }
-
-.filter-bar {
-display: flex; gap: 12px; margin-bottom: 56px; flex-wrap: wrap;
-}
-.filter-btn {
-padding: 8px 20px;
-font-size: 9px; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
-border: 1px solid rgba(201,169,97,0.3); background: transparent;
-color: var(–gray); cursor: pointer; transition: all 0.3s;
-}
-.filter-btn:hover, .filter-btn.active {
-border-color: var(–gold); color: var(–gold); background: rgba(201,169,97,0.06);
-}
-
-.episodes-grid {
-display: grid;
-grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-gap: 2px;
-}
-
-.ep-card {
-background: var(–dark2);
-border: 1px solid rgba(201,169,97,0.08);
-padding: 28px;
-position: relative;
-overflow: hidden;
-transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-cursor: pointer;
-}
-.ep-card::before {
-content: ‘’; position: absolute; left: 0; top: 0;
-width: 2px; height: 0; background: var(–gold);
-transition: height 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.ep-card:hover { background: var(–dark3); border-color: rgba(201,169,97,0.25); transform: translateY(-3px); }
-.ep-card:hover::before { height: 100%; }
-
-.ep-number {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 48px; font-weight: 600;
-color: rgba(201,169,97,0.1);
-position: absolute; top: 16px; right: 20px;
-line-height: 1; pointer-events: none;
-transition: color 0.4s;
-}
-.ep-card:hover .ep-number { color: rgba(201,169,97,0.18); }
-
-.ep-tag {
-font-size: 8px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-color: var(–gold); margin-bottom: 14px;
-}
-
-.ep-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 18px; font-weight: 400; line-height: 1.35;
-color: var(–white); margin-bottom: 14px;
-}
-
-.ep-hook {
-font-size: 12px; color: var(–gray); line-height: 1.6;
-margin-bottom: 20px;
-}
-
-.ep-points {
-display: flex; flex-direction: column; gap: 6px;
-}
-.ep-point {
-font-size: 11px; color: rgba(219,200,182,0.7);
-display: flex; gap: 10px; align-items: flex-start;
-}
-.ep-point-dot {
-width: 4px; height: 4px; background: var(–gold);
-border-radius: 50%; flex-shrink: 0; margin-top: 5px;
-}
-
-.ep-conclusion {
-margin-top: 20px; padding: 12px 16px;
-background: rgba(201,169,97,0.08); border-left: 2px solid var(–gold);
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 13px; font-style: italic; color: var(–gold);
-line-height: 1.5;
-}
-
-.ep-badge {
-position: absolute; top: 16px; left: 28px;
-font-size: 8px; font-weight: 600; letter-spacing: 0.12em; text-transform: uppercase;
-padding: 3px 8px; background: rgba(201,169,97,0.15);
-color: var(–gold); border-radius: 2px;
-}
-.ep-badge.bonus { background: rgba(201,169,97,0.25); }
-
-/* ── EXPAND/COLLAPSE ──────────────────────────────────────────────────────── */
-.ep-expandable { display: none; }
-.ep-card.open .ep-expandable { display: block; }
-.ep-toggle {
-margin-top: 16px;
-font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-color: var(–gold); display: flex; align-items: center; gap: 8px; cursor: pointer;
-}
-.ep-toggle-icon { width: 14px; height: 14px; transition: transform 0.3s; }
-.ep-card.open .ep-toggle-icon { transform: rotate(45deg); }
-
-/* ── MÉTHODE ─────────────────────────────────────────────────────────────── */
-#methode { background: var(–dark); }
-
-.methode-grid {
-display: grid; grid-template-columns: repeat(2, 1fr); gap: 2px;
-margin-top: 64px;
-}
-
-.methode-card {
-background: var(–dark2); padding: 48px 40px;
-border: 1px solid rgba(201,169,97,0.08);
-position: relative; overflow: hidden;
-transition: all 0.4s;
-}
-.methode-card:hover { border-color: rgba(201,169,97,0.25); }
-.methode-card::before {
-content: ‘’; position: absolute; top: 0; left: 0;
-right: 0; height: 2px; background: var(–gold);
-transform: scaleX(0); transform-origin: left;
-transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-.methode-card:hover::before { transform: scaleX(1); }
-
-.methode-icon {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 56px; font-weight: 600; color: rgba(201,169,97,0.15);
-line-height: 1; margin-bottom: 24px;
-}
-.methode-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 24px; font-weight: 400; color: var(–white);
-margin-bottom: 16px;
-}
-.methode-desc {
-font-size: 13px; color: var(–beige); line-height: 1.7;
-}
-
-/* ── LIVRABLES ───────────────────────────────────────────────────────────── */
-#livrables { background: var(–black); }
-
-.livrables-grid {
-display: grid; grid-template-columns: repeat(3, 1fr); gap: 2px;
-margin-top: 64px;
-}
-
-.livrable-card {
-background: var(–dark2);
-border: 1px solid rgba(201,169,97,0.08);
-padding: 40px 32px;
-transition: all 0.4s;
-position: relative;
-}
-.livrable-card:hover { border-color: rgba(201,169,97,0.3); background: var(–dark3); }
-
-.livrable-number {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 64px; font-weight: 700; color: var(–gold);
-line-height: 1; margin-bottom: 16px;
-}
-.livrable-label {
-font-size: 9px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-color: var(–gray); margin-bottom: 8px;
-}
-.livrable-desc {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 17px; color: var(–beige); line-height: 1.5;
-}
-.livrable-detail {
-font-size: 11px; color: var(–gray); margin-top: 12px; line-height: 1.6;
-}
-
-/* ── CONTACT CTA ─────────────────────────────────────────────────────────── */
-#contact {
-background: var(–dark);
-text-align: center;
-}
-
-.contact-inner {
-max-width: 680px; margin: 0 auto;
-}
-
-.contact-title {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: clamp(40px, 5vw, 64px);
-font-weight: 300; line-height: 1.1;
-margin-bottom: 32px;
-}
-.contact-title em { font-style: italic; color: var(–gold); }
-
-.contact-sub {
-font-size: 14px; color: var(–beige); margin-bottom: 56px; line-height: 1.8;
-}
-
-.contact-links {
-display: flex; justify-content: center; gap: 48px; flex-wrap: wrap;
-margin-bottom: 64px;
-}
-
-.contact-link {
-display: flex; flex-direction: column; align-items: center; gap: 8px;
-text-decoration: none; transition: all 0.3s;
-}
-.contact-link:hover { transform: translateY(-4px); }
-.contact-link-label {
-font-size: 8px; font-weight: 600; letter-spacing: 0.25em; text-transform: uppercase;
-color: var(–gray);
-}
-.contact-link-value {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 18px; color: var(–gold);
-}
-
-.contact-btn {
-display: inline-flex; align-items: center; gap: 16px;
-padding: 18px 48px; background: var(–gold); color: var(–black);
-font-size: 10px; font-weight: 600; letter-spacing: 0.2em; text-transform: uppercase;
-text-decoration: none; transition: all 0.3s;
-}
-.contact-btn:hover { background: var(–gold-light); transform: translateY(-2px); }
-
-/* ── FOOTER ─────────────────────────────────────────────────────────────── */
-footer {
-background: var(–black);
-border-top: 1px solid rgba(201,169,97,0.15);
-padding: 32px 48px;
-display: flex; align-items: center; justify-content: space-between;
-}
-.footer-logo {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 13px; font-weight: 600; letter-spacing: 0.18em;
-color: var(–gold); text-transform: uppercase;
-}
-.footer-tagline {
-font-family: ‘Cormorant Garamond’, serif;
-font-size: 13px; font-style: italic; color: var(–gray);
-}
-.footer-right {
-font-size: 9px; letter-spacing: 0.15em; color: var(–gray); text-transform: uppercase;
-}
-
-/* ── FIXED GOLD LEFT BORDER ─────────────────────────────────────────────── */
-.gold-border-left {
-position: fixed; left: 0; top: 0; bottom: 0;
-width: 3px; background: linear-gradient(to bottom, transparent, var(–gold) 30%, var(–gold) 70%, transparent);
-z-index: 200; pointer-events: none;
-}
-
-/* ── SCROLL PROGRESS ─────────────────────────────────────────────────────── */
-.scroll-progress {
-position: fixed; top: 0; left: 0; right: 0; height: 2px;
-background: rgba(201,169,97,0.15); z-index: 300;
-}
-.scroll-bar {
-height: 100%; background: var(–gold); width: 0%;
-transition: width 0.1s linear;
-}
-
-/* ── ANIMATIONS ──────────────────────────────────────────────────────────── */
-.fade-up {
-opacity: 0; transform: translateY(32px);
-transition: opacity 0.7s ease, transform 0.7s ease;
-}
-.fade-up.visible { opacity: 1; transform: translateY(0); }
-
-/* ── RESPONSIVE ─────────────────────────────────────────────────────────── */
-@media (max-width: 900px) {
-header { padding: 16px 24px; }
-nav { display: none; }
-.hero { grid-template-columns: 1fr; }
-.hero-left { padding: 120px 24px 60px; }
-.hero-right { display: none; }
-section { padding: 80px 24px; }
-.methode-grid, .livrables-grid { grid-template-columns: 1fr; }
-.episodes-grid { grid-template-columns: 1fr; }
-.contact-links { gap: 32px; }
-footer { flex-direction: column; gap: 12px; text-align: center; }
-.hero-stats { gap: 24px; }
-}
-</style>
-
+    <meta charset="UTF-8">
+    <title>Checklist Loi Hoguet - Devoirs des Agents Immobiliers</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            line-height: 1.6;
+            color: #333;
+            margin: 0;
+            padding: 20px;
+        }
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #005eb8;
+            padding-bottom: 10px;
+        }
+        .header h1 {
+            color: #005eb8;
+            font-size: 24px;
+        }
+        .section {
+            margin-bottom: 25px;
+            border-left: 4px solid #005eb8;
+            padding-left: 15px;
+        }
+        .section h2 {
+            color: #005eb8;
+            font-size: 18px;
+            margin-top: 0;
+        }
+        .checkbox {
+            margin-bottom: 8px;
+        }
+        .checkbox input {
+            margin-right: 10px;
+        }
+        .proof, .warning {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin: 15px 0;
+            border-left: 4px solid #dc3545;
+        }
+        .warning {
+            background-color: #fff3cd;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        th {
+            background-color: #005eb8;
+            color: white;
+        }
+        .footer {
+            text-align: center;
+            margin-top: 30px;
+            font-size: 12px;
+            color: #666;
+        }
+    </style>
 </head>
 <body>
-
-<div class="gold-border-left"></div>
-<div class="scroll-progress"><div class="scroll-bar" id="scrollBar"></div></div>
-
-<!-- HEADER -->
-
-<header>
-  <div class="logo">Leper Sonko | Conseil Immobilier</div>
-  <nav>
-    <a href="#serie">La Série</a>
-    <a href="#episodes">Épisodes</a>
-    <a href="#methode">Méthode</a>
-    <a href="#livrables">Livrables</a>
-    <a href="#contact">Contact</a>
-  </nav>
-</header>
-
-<!-- HERO -->
-
-<section class="hero">
-  <div class="hero-left">
-    <div class="hero-eyebrow">Série Instagram — Contenu Premium</div>
-    <h1 class="hero-title">
-      Maîtriser le<br>
-      Marché<br>
-      <em>Immobilier</em><br>
-      Parisien
-    </h1>
-    <p class="hero-subtitle">30 leçons. Une méthode. Un marché.</p>
-
-```
-<div class="hero-stats">
-  <div class="stat">
-    <div class="stat-number">30</div>
-    <div class="stat-label">Épisodes</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">210</div>
-    <div class="stat-label">Slides</div>
-  </div>
-  <div class="stat">
-    <div class="stat-number">30</div>
-    <div class="stat-label">Légendes</div>
-  </div>
-</div>
-
-<a href="#contact" class="hero-cta">
-  Démarrer un projet
-  <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-    <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-</a>
-```
-
-  </div>
-
-  <div class="hero-right">
-    <div class="hero-bg-number">30</div>
-    <div class="hero-grid-preview">
-      <!-- Preview cards - decorative -->
-      <script>
-        document.addEventListener('DOMContentLoaded', () => {
-          const grid = document.querySelector('.hero-grid-preview');
-          const themes = ['DPE & Énergie','Négociation','Sectorisation','VEFA','Viager','Plus-value','Copropriété','Estimation','Home Staging','Financement','Arrondissements','Mandats','Diagnostics','Charges','Étage premium'];
-          themes.forEach((t, i) => {
-            const card = document.createElement('div');
-            card.className = 'preview-card';
-            card.innerHTML = `<div class="preview-card-bar"></div><div class="preview-card-ep">Ép. ${String(i+1).padStart(2,'0')}</div>`;
-            card.style.background = `linear-gradient(135deg, #${['1A1A1A','1C1C1C','181818'][i%3]}, #${['0E0E0E','121212','161616'][i%3]})`;
-            grid.appendChild(card);
-          });
-        });
-      </script>
+    <div class="header">
+        <h1>CHECKLIST LOI HOGUET</h1>
+        <p><strong>4 DEVOIRS À VÉRIFIER POUR CHAQUE DOSSIER</strong></p>
+        <p><em>À cocher systématiquement et à archiver comme preuve de diligence</em></p>
     </div>
-  </div>
-</section>
 
-<!-- SÉRIE -->
+    <div class="section">
+        <h2>1️⃣ DEVOIR DE CONSEIL (Art. L. 271-1)</h2>
+        <p><strong>Objectif</strong> : Informer le client sur les conséquences juridiques, fiscales et techniques de la transaction.</p>
 
-<section id="serie">
-  <div class="section-label">À propos de la série</div>
-  <h2 class="section-title fade-up">
-    Une série de contenu<br>éducatif premium
-  </h2>
-  <p class="serie-intro fade-up">
-    La série <strong style="color:var(--white)">"Maîtriser le Marché Immobilier Parisien"</strong> est un programme de contenu Instagram structuré en 30 épisodes thématiques. Chaque épisode comprend un carrousel de 7 slides au format 1080×1080px et une légende professionnelle prête à publier.
-  </p>
-  <div class="tagline-block fade-up">
-    "Le marché parisien récompense la précision. Ce projet en est la démonstration."
-  </div>
-  <p class="serie-intro fade-up" style="margin-bottom:0;">
-    Chaque sujet traité — du DPE aux diagnostics, de la plus-value à la copropriété — est présenté avec un angle contre-intuitif, des données factuelles et une conclusion actionnable. La série couvre l'ensemble du cycle immobilier parisien : achat, vente, investissement, financement et gouvernance.
-  </p>
-</section>
-
-<!-- ÉPISODES -->
-
-<section id="episodes">
-  <div class="section-label">Contenu complet</div>
-  <h2 class="section-title fade-up">Les 30 épisodes</h2>
-
-  <div class="filter-bar fade-up">
-    <button class="filter-btn active" data-filter="all">Tous</button>
-    <button class="filter-btn" data-filter="achat">Achat</button>
-    <button class="filter-btn" data-filter="vente">Vente</button>
-    <button class="filter-btn" data-filter="investissement">Investissement</button>
-    <button class="filter-btn" data-filter="financement">Financement</button>
-    <button class="filter-btn" data-filter="bonus">Bonus</button>
-  </div>
-
-  <div class="episodes-grid" id="episodesGrid"></div>
-</section>
-
-<!-- MÉTHODE -->
-
-<section id="methode">
-  <div class="section-label">Approche éditoriale</div>
-  <h2 class="section-title fade-up">
-    Une méthode<br>en quatre principes
-  </h2>
-
-  <div class="methode-grid">
-    <div class="methode-card fade-up">
-      <div class="methode-icon">01</div>
-      <h3 class="methode-title">Hook contre-intuitif</h3>
-      <p class="methode-desc">Chaque épisode commence par une affirmation qui brise une croyance répandue. La première ligne oblige le lecteur à swiper — avant même de savoir ce qui suit.</p>
-    </div>
-    <div class="methode-card fade-up" style="transition-delay:0.1s">
-      <div class="methode-icon">02</div>
-      <h3 class="methode-title">Données vérifiables</h3>
-      <p class="methode-desc">Aucune statistique inventée, aucun chiffre extrapolé. Chaque affirmation repose sur des sources citables : DVF, HCSF, réglementation en vigueur, pratiques notariales.</p>
-    </div>
-    <div class="methode-card fade-up" style="transition-delay:0.2s">
-      <div class="methode-icon">03</div>
-      <h3 class="methode-title">Structure en 4 points</h3>
-      <p class="methode-desc">Chaque slide de contenu présente 4 points numérotés avec un bloc gold conclusion. La synthèse et le CTA ferment chaque épisode avec cohérence.</p>
-    </div>
-    <div class="methode-card fade-up" style="transition-delay:0.3s">
-      <div class="methode-icon">04</div>
-      <h3 class="methode-title">Charte premium constante</h3>
-      <p class="methode-desc">Fond noir dégradé, bordure or, blocs gold accent sur fond plein. Playfair × Helvetica Neue. Noir #1A1A1A, or #C9A961, beige #DBC8B6. Une identité visuelle immédiatement reconnaissable.</p>
-    </div>
-  </div>
-</section>
-
-<!-- LIVRABLES -->
-
-<section id="livrables">
-  <div class="section-label">Production</div>
-  <h2 class="section-title fade-up">Ce que comprend le projet</h2>
-
-  <div class="livrables-grid">
-    <div class="livrable-card fade-up">
-      <div class="livrable-number">210</div>
-      <div class="livrable-label">Slides Instagram</div>
-      <div class="livrable-desc">30 carousels complets de 7 slides chacun</div>
-      <div class="livrable-detail">Format 1080×1080px · JPEG haute qualité · Fond noir dégradé · Charte or champagne · Cover photo personnalisée</div>
-    </div>
-    <div class="livrable-card fade-up" style="transition-delay:0.1s">
-      <div class="livrable-number">30</div>
-      <div class="livrable-label">Légendes Word</div>
-      <div class="livrable-desc">30 fichiers .docx prêts à copier-coller</div>
-      <div class="livrable-detail">Hook direct · 4 points développés · CTA · 5 hashtags ciblés · Note de publication avec créneau recommandé</div>
-    </div>
-    <div class="livrable-card fade-up" style="transition-delay:0.2s">
-      <div class="livrable-number">5+</div>
-      <div class="livrable-label">Miniatures 9:16</div>
-      <div class="livrable-desc">Visuels Reels format vertical 1080×1920px</div>
-      <div class="livrable-detail">Bloc gold accent · Titre impactant · Photo intégrée · Format Stories et Reels Instagram</div>
-    </div>
-    <div class="livrable-card fade-up" style="transition-delay:0.3s">
-      <div class="livrable-number">1</div>
-      <div class="livrable-label">Lookbook PDF</div>
-      <div class="livrable-desc">31 pages premium — 1 épisode par page</div>
-      <div class="livrable-detail">Alternance fond noir / fond crème · Cover photo · 4 points clés · Bloc conclusion or · Pagination élégante</div>
-    </div>
-    <div class="livrable-card fade-up" style="transition-delay:0.4s">
-      <div class="livrable-number">1</div>
-      <div class="livrable-label">Livre PDF</div>
-      <div class="livrable-desc">Résumés structurés des 30 épisodes</div>
-      <div class="livrable-detail">Couverture · Mot de l'auteur · Sommaire · 2 épisodes par page · Blocs gold conclusion · Page de contact finale</div>
-    </div>
-    <div class="livrable-card fade-up" style="transition-delay:0.5s">
-      <div class="livrable-number">1</div>
-      <div class="livrable-label">Page HTML</div>
-      <div class="livrable-desc">Ce document — référence complète du projet</div>
-      <div class="livrable-detail">Navigation fixe · Grille filtrée des 30 épisodes · Charte visuelle intégrée · Responsive mobile</div>
-    </div>
-  </div>
-</section>
-
-<!-- CONTACT -->
-
-<section id="contact">
-  <div class="contact-inner">
-    <div class="section-label" style="justify-content:center; margin-bottom:32px">Ibrahima André Sonko</div>
-    <h2 class="contact-title fade-up">
-      Votre projet parisien<br>
-      <em>mérite une stratégie.</em>
-    </h2>
-    <p class="contact-sub fade-up">
-      Conseiller immobilier indépendant chez eXp France.<br>
-      Spécialiste Paris 6e, 7e, 8e, 16e, 17e et banlieue Ouest.
-    </p>
-    <div class="contact-links fade-up">
-      <a href="mailto:andre.sonko@expfrance.fr" class="contact-link">
-        <span class="contact-link-label">Email</span>
-        <span class="contact-link-value">andre.sonko@expfrance.fr</span>
-      </a>
-      <a href="tel:+33626507761" class="contact-link">
-        <span class="contact-link-label">Téléphone</span>
-        <span class="contact-link-value">+33 6 26 50 77 61</span>
-      </a>
-      <a href="https://mon.expfrance.fr/sonko" target="_blank" class="contact-link">
-        <span class="contact-link-label">Site web</span>
-        <span class="contact-link-value">mon.expfrance.fr/sonko</span>
-      </a>
-      <a href="https://calendly.com/sonko/appel" target="_blank" class="contact-link">
-        <span class="contact-link-label">Calendly</span>
-        <span class="contact-link-value">Prendre rendez-vous</span>
-      </a>
-    </div>
-    <a href="https://calendly.com/sonko/appel" target="_blank" class="contact-btn fade-up">
-      Réserver un appel
-      <svg width="16" height="16" viewBox="0 0 16 16" fill="none">
-        <path d="M3 8h10M9 4l4 4-4 4" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
-      </svg>
-    </a>
-  </div>
-</section>
-
-<!-- FOOTER -->
-
-<footer>
-  <div class="footer-logo">Leper Sonko | Conseil Immobilier</div>
-  <div class="footer-tagline">Sérénité. Élégance. Résultat.</div>
-  <div class="footer-right">eXp France · Paris & Banlieue Ouest</div>
-</footer>
-
-<script>
-// ── ÉPISODES DATA ────────────────────────────────────────────────────────────
-const episodes = [
-  { num: "01", title: "Pourquoi deux biens identiques ne valent jamais le même prix à Paris", hook: "Le prix au mètre carré est un repère — pas une vérité. 4 variables font toute la différence.", points: ["Micro-emplacement : 200 mètres peuvent changer la logique de valeur","Profondeur de marché et liquidité","Qualité perçue : lumière, volumes, standing","Stratégie de lancement"], conclusion: "À Paris, le prix final est le résultat d'un positionnement maîtrisé.", tags: ["achat","vente"] },
-  { num: "02", title: "Préparer une vente à Paris : méthode structurée", hook: "La différence entre une vente subie et une vente optimisée réside dans la préparation stratégique.", points: ["Audit technique et diagnostics","Analyse comparative des transactions récentes","Optimisation du produit : home staging, lumière","Stratégie de lancement et timing"], conclusion: "Un lancement mal calibré entraîne une érosion progressive du prix.", tags: ["vente"] },
-  { num: "03", title: "Avant de faire une offre à Paris : analyse indispensable", hook: "Un immeuble haussmannien peut présenter une façade prestigieuse et une structure financière fragile.", points: ["PV d'AG sur 3 exercices","Travaux votés et financement","Charges de copropriété et leur évolution","Contentieux et taux d'impayés"], conclusion: "À Paris, l'expertise documentaire protège le capital.", tags: ["achat"] },
-  { num: "04", title: "Pourquoi certains biens ne se vendent pas à Paris", hook: "Le marché parisien ne sanctionne pas le produit. Il sanctionne l'erreur de positionnement.", points: ["Prix hors zone d'acceptabilité","Absence d'analyse concurrentielle","Présentation visuelle insuffisante","Mauvais ciblage acheteur"], conclusion: "La rigueur stratégique conditionne le succès commercial.", tags: ["vente"] },
-  { num: "05", title: "Trouver un bien à Paris : une question de méthode", hook: "Trouver à Paris n'est pas seulement une question de moyens. C'est une question d'accès à l'information.", points: ["Critères incompatibles avec le budget réel","Manque de réactivité sur les biens liquides","Recherche limitée aux portails publics","Absence de réseau actif"], conclusion: "L'information crée l'avantage. Le réseau crée l'information.", tags: ["achat"] },
-  { num: "06", title: "La négociation immobilière à Paris : approche rationnelle", hook: "Négocier à Paris ne signifie pas réduire le prix à tout prix. Cela signifie analyser avant d'argumenter.", points: ["Références DVF réelles vs prix affichés","Délai de commercialisation documenté","Motivation du vendeur","Pression concurrentielle réelle"], conclusion: "À Paris, l'argumentation chiffrée est plus performante que l'émotion.", tags: ["achat","vente"] },
-  { num: "07", title: "Lire un PV d'AG comme un professionnel", hook: "Un PV d'AG n'est pas une formalité administrative. C'est le document le plus révélateur sur la santé d'un immeuble.", points: ["Travaux reportés = charges futures certaines","Votes à majorité fragile","Tensions récurrentes et impayés","Projets structurants à venir"], conclusion: "Plus votre analyse est fine, plus votre décision est sécurisée.", tags: ["achat"] },
-  { num: "08", title: "Le prix au m² à Paris : pourquoi cet indicateur ne suffit pas", hook: "Le prix au m² est le repère le plus utilisé — et le moins suffisant — du marché parisien.", points: ["Surface pondérée réelle vs Carrez","Distribution du plan et organisation des espaces","Étage, exposition, ascenseur","Charges et coût total de détention"], conclusion: "Le prix au m² commence la réflexion. Il ne la conclut pas.", tags: ["achat","vente"] },
-  { num: "09", title: "Comprendre la sectorisation scolaire à Paris avant d'acheter", hook: "Certains immeubles enregistrent une décote structurelle non pas à cause de leur qualité, mais de leur adresse.", points: ["Impact sur la demande et la liquidité","Collège public rattaché","Établissements privés du secteur","Décote hors périmètre recherché"], conclusion: "La sectorisation ne s'anticipe pas à la revente. Elle se vérifie avant l'achat.", tags: ["achat"] },
-  { num: "10", title: "Les charges de copropriété : comment les lire", hook: "Des charges élevées ne signifient pas un mauvais investissement. Des charges faibles ne signifient pas une bonne affaire.", points: ["Charges courantes et niveau de service","Provisions pour travaux","Charges exceptionnelles","Lecture contextuelle : le chiffre seul ne suffit pas"], conclusion: "Les charges sont un levier de négociation documenté.", tags: ["achat","investissement"] },
-  { num: "11", title: "Acheter en étage élevé à Paris : avantages réels et limites", hook: "L'étage élevé sans ascenseur est souvent une décote déguisée en avantage.", points: ["Avantages réels : lumière, dégagement, nuisances","Limite 1 : l'ascenseur — critère éliminatoire","Limite 2 : exposition thermique","Limite 3 : profil de l'acquéreur cible"], conclusion: "L'étage est un avantage relatif. Son impact se mesure au cas par cas.", tags: ["achat"] },
-  { num: "12", title: "Vendre ou attendre : comment lire le cycle du marché", hook: "Attendre sans lire les indicateurs, c'est espérer sans décider.", points: ["Volume des transactions sur 12 mois","Évolution des délais de vente","Écart prix affiché / prix effectif","Taux d'emprunt et solvabilité"], conclusion: "Attendre a un coût. Vendre trop tôt aussi.", tags: ["vente"] },
-  { num: "13", title: "Le dossier acheteur : pourquoi il conditionne la négociation", hook: "À Paris, un vendeur choisit sur la solidité du dossier autant que sur le prix.", points: ["Clarté de l'apport et son origine","Confirmation de financement","Cohérence profil / bien ciblé","Réactivité dans les échanges"], conclusion: "Dans un marché compétitif, la force du dossier est un levier de négociation.", tags: ["achat","financement"] },
-  { num: "14", title: "Investir à Paris : rendement locatif ou valorisation patrimoniale ?", hook: "La question n'est pas : quel est le meilleur investissement ? Elle est : quel est votre objectif ?", points: ["Rendement locatif : petites surfaces, cash-flow","Valorisation patrimoniale : grandes surfaces Ouest","Le profil de l'investisseur","Le bon produit selon l'objectif"], conclusion: "À Paris, la clarté de l'objectif conditionne le choix du produit.", tags: ["investissement"] },
-  { num: "15", title: "Le home staging à Paris : outil commercial, pas décoration", hook: "Le home staging n'est pas de la décoration. C'est une réduction du risque commercial.", points: ["Ce qu'il corrige : biais visuels, projection","Ce qu'il ne remplace pas : prix mal positionné","Impact sur délai et marges de négociation","La première impression : 10 minutes en visite"], conclusion: "À Paris, la première impression est souvent la seule.", tags: ["vente"] },
-  { num: "16", title: "Comprendre le DPE avant d'acheter ou de vendre à Paris", hook: "Le DPE n'est plus une formalité administrative. C'est un critère de valeur structurel.", points: ["Classes A à G : consommation et CO₂","Interdictions de location (G 2025, F 2028)","Décote à l'achat pour DPE dégradé","Levier vendeur : améliorer avant la vente"], conclusion: "À Paris, ignorer le DPE est une erreur de calcul.", tags: ["achat","vente"] },
-  { num: "17", title: "Acheter à Paris avec un crédit : ce que les banques analysent", hook: "La banque n'analyse pas seulement votre salaire. Elle analyse la cohérence globale de votre projet.", points: ["Taux d'endettement : 35 % max (HCSF)","Reste à vivre après remboursement","Stabilité des revenus : CDI vs TNS","Apport et qualité du projet"], conclusion: "La qualité du dossier est un levier de négociation du taux.", tags: ["financement"] },
-  { num: "18", title: "Les arrondissements de Paris : pourquoi la valeur ne suit pas l'ordre", hook: "Le 18e n'est pas moins cher que le 8e parce qu'il porte un plus grand numéro.", points: ["Arrondissements premium : 6e, 7e, 8e, 16e, 17e Ouest","Écarts intra-arrondissement significatifs","Ce qui détermine vraiment la valeur","La bonne échelle d'analyse : la rue et l'immeuble"], conclusion: "Le prix d'un bien parisien se lit à l'adresse. Pas à l'arrondissement.", tags: ["achat","vente"] },
-  { num: "19", title: "Vendre un bien occupé à Paris : contraintes et stratégie", hook: "Un bien occupé à Paris n'est pas invendable. C'est un bien qui s'adresse à une cible différente.", points: ["La décote marché et son calcul","Droit de préemption du locataire","Coordination des visites","Stratégie : dossier locatif + ciblage investisseurs"], conclusion: "La décote se calcule. Elle ne s'accepte pas sans analyse.", tags: ["vente","investissement"] },
-  { num: "20", title: "Les frais d'acquisition à Paris : ce que l'acheteur doit anticiper", hook: "Le prix affiché n'est pas ce que vous allez réellement payer.", points: ["Frais de notaire : 7 à 8 % dans l'ancien","Frais d'agence : 3 à 5 %","Frais bancaires et garantie : 1 à 1,5 %","Travaux immédiats : à chiffrer avant l'offre"], conclusion: "Sur 800 000 €, les frais annexes peuvent représenter 80 à 110 000 €.", tags: ["achat","financement"] },
-  { num: "21", title: "L'estimation immobilière à Paris : méthodes et limites", hook: "Les outils en ligne donnent une fourchette. Un conseil professionnel donne une stratégie.", points: ["Comparaison directe : méthode de référence","Méthode par le revenu : pour l'investissement","Méthode hédoniste : pondération des attributs","Limites communes : données passées, marché évolutif"], conclusion: "À Paris, l'estimation est un acte de conseil. Pas un calcul.", tags: ["vente","achat"] },
-  { num: "22", title: "Le mandat de vente à Paris : exclusif ou simple ?", hook: "Multiplier les agences ne multiplie pas les chances de vendre.", points: ["Mandat simple : engagement dilué","Mandat exclusif : concentration et stratégie","Risque de surexposition = signal négatif","Ce qu'un bon mandat exclusif doit contenir"], conclusion: "La visibilité sans stratégie est contre-productive.", tags: ["vente"] },
-  { num: "23", title: "La fiscalité de la plus-value immobilière à Paris", hook: "La plus-value nette dépend autant de la fiscalité que du prix de vente.", points: ["Calcul de base : cession moins acquisition","19 % IR + 17,2 % prélèvements = 36,2 %","Abattements progressifs à partir de 6 ans","Résidence principale exonérée sous conditions"], conclusion: "L'impact fiscal doit être calculé avant la décision de vendre.", tags: ["vente","investissement"] },
-  { num: "24", title: "Les diagnostics immobiliers à Paris : liste et enjeux", hook: "Un diagnostic erroné ou manquant peut entraîner une annulation de vente.", points: ["DPE + Amiante : validités spécifiques","Plomb (CREP) + ERP : sécurité et validités","Électricité + Gaz : +15 ans, validité 3 ans","Loi Carrez : erreur >5 % = réduction de prix"], conclusion: "La rigueur documentaire protège le vendeur et l'acheteur.", tags: ["vente"] },
-  { num: "25", title: "Acheter en viager à Paris : logique financière et précautions", hook: "Le viager est souvent présenté comme un pari. C'est une stratégie d'acquisition structurée.", points: ["Principe : bouquet + rente mensuelle","Calibrage bouquet/rente et rentabilité","Espérance de vie : variable centrale","Précautions : valeur libre, clauses, garanties"], conclusion: "Le viager requiert une analyse actuarielle et juridique rigoureuse.", tags: ["achat","investissement"] },
-  { num: "26", title: "La copropriété parisienne : comprendre sa gouvernance", hook: "Acheter un appartement parisien, c'est aussi acheter une part d'une structure collective.", points: ["Le syndic : gestion courante et comptabilité","Le conseil syndical : contrôle et relais","L'assemblée générale : règles de majorité","Signaux d'alerte à identifier avant d'acheter"], conclusion: "Une copropriété bien gouvernée est un actif. Une copropriété dysfonctionnelle est un risque.", tags: ["achat"] },
-  { num: "27", title: "La photographie immobilière à Paris : pourquoi elle conditionne l'intérêt", hook: "Un acheteur ne contacte jamais un bien dont les photos ne l'ont pas convaincu.", points: ["Sélection en ligne : photos avant descriptif","Perception de surface améliorée","Mise en valeur du standing et du positionnement","Qualité supérieure des contacts entrants"], conclusion: "Sur un marché en ligne, la photo est le premier argument commercial.", tags: ["vente"] },
-  { num: "28", title: "L'achat en VEFA à Paris : opportunités et vigilances", hook: "Acheter en VEFA, c'est acheter un bien qui n'existe pas encore.", points: ["Avantages : frais réduits, garanties légales","Vigilance 1 : délais de livraison","Vigilance 2 : valeur à la livraison","Vigilance 3 : contrat de réservation"], conclusion: "Les avantages se lisent dans la brochure. Les risques se lisent dans le contrat.", tags: ["achat"] },
-  { num: "B1", title: "Paris 2025-2026 : ce que les données disent vraiment", hook: "Tout le monde a un avis sur le marché parisien en 2026. Peu lisent réellement les données.", points: ["Volumes : reprise sélective","Délais : thermomètre du positionnement","Taux : détente progressive depuis 2023","Prix effectifs : stabilité sélective et corrections"], conclusion: "En 2025-2026, la méthode fait plus la différence que le timing.", tags: ["bonus"] },
-  { num: "B2", title: "Pourquoi je travaille différemment — et ce que ça change pour vous", hook: "Le conseil immobilier commence là où l'agence s'arrête.", points: ["Analyse avant action : données vérifiables","Stratégie personnalisée selon votre objectif","Accès et réseau : off-market et mandats","Accompagnement de l'estimation à la remise des clés"], conclusion: "Sérénité. Élégance. Résultat.", tags: ["bonus"] },
-];
-
-// ── RENDER ÉPISODES ──────────────────────────────────────────────────────────
-function renderEpisodes(filter = 'all') {
-  const grid = document.getElementById('episodesGrid');
-  grid.innerHTML = '';
-  const filtered = filter === 'all' ? episodes : episodes.filter(ep => ep.tags.includes(filter));
-
-  filtered.forEach((ep, i) => {
-    const isBonus = ep.num.startsWith('B');
-    const card = document.createElement('div');
-    card.className = 'ep-card fade-up';
-    card.style.transitionDelay = `${(i % 3) * 0.07}s`;
-    card.innerHTML = `
-      <div class="ep-badge ${isBonus ? 'bonus' : ''}">${isBonus ? 'Bonus' : 'Ép. ' + ep.num}</div>
-      <div class="ep-number">${ep.num}</div>
-      <div style="margin-top:28px">
-        <h3 class="ep-title">${ep.title}</h3>
-        <p class="ep-hook">${ep.hook}</p>
-      </div>
-      <div class="ep-toggle" onclick="toggleCard(this)">
-        <svg class="ep-toggle-icon" viewBox="0 0 14 14" fill="none">
-          <line x1="7" y1="1" x2="7" y2="13" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-          <line x1="1" y1="7" x2="13" y2="7" stroke="currentColor" stroke-width="1.5" stroke-linecap="round"/>
-        </svg>
-        Voir les points clés
-      </div>
-      <div class="ep-expandable">
-        <div class="ep-points" style="margin-top:16px">
-          ${ep.points.map(p => `<div class="ep-point"><div class="ep-point-dot"></div><span>${p}</span></div>`).join('')}
+        <div class="checkbox">
+            <input type="checkbox"> <strong>Pour le vendeur</strong> :
+            <ul>
+                <li><input type="checkbox"> Avoir expliqué les <strong>impacts fiscaux</strong> (plus-value, exonérations possibles). <em>Source : Cass. Civ. 1re, 10 juillet 2019, n° 18-17.642.</em></li>
+                <li><input type="checkbox"> Avoir conseillé sur les <strong>diagnostics obligatoires</strong> (DPE, amiante, électricité, etc.) et leurs conséquences.</li>
+                <li><input type="checkbox"> Avoir informé sur les <strong>délais de rétractation</strong> et les conditions suspensives.</li>
+            </ul>
         </div>
-        <div class="ep-conclusion">${ep.conclusion}</div>
-      </div>
-    `;
-    grid.appendChild(card);
-  });
 
-  // Trigger fade-up
-  setTimeout(() => {
-    grid.querySelectorAll('.fade-up').forEach(el => el.classList.add('visible'));
-  }, 50);
-}
+        <div class="checkbox">
+            <input type="checkbox"> <strong>Pour l’acheteur</strong> :
+            <ul>
+                <li><input type="checkbox"> Avoir expliqué les <strong>aides financières</strong> (PTZ, MaPrimeRénov’).</li>
+                <li><input type="checkbox"> Avoir alerté sur les <strong>risques liés au bien</strong> (copropriété, servitudes, nuisances).</li>
+            </ul>
+        </div>
 
-function toggleCard(btn) {
-  const card = btn.closest('.ep-card');
-  card.classList.toggle('open');
-  btn.querySelector('span').textContent = card.classList.contains('open') ? 'Réduire' : 'Voir les points clés';
-}
+        <div class="proof">
+            <strong>Preuve</strong> :
+            <ul>
+                <li><input type="checkbox"> Email récapitulatif envoyé au client avec les points clés.</li>
+                <li><input type="checkbox"> Compte-rendu de rendez-vous signé.</li>
+            </ul>
+        </div>
+    </div>
 
-// ── FILTERS ──────────────────────────────────────────────────────────────────
-document.querySelectorAll('.filter-btn').forEach(btn => {
-  btn.addEventListener('click', () => {
-    document.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
-    btn.classList.add('active');
-    renderEpisodes(btn.dataset.filter);
-  });
-});
+    <div class="section">
+        <h2>2️⃣ DEVOIR D’INFORMATION (Art. L. 271-4)</h2>
+        <p><strong>Objectif</strong> : Transmettre toutes les informations utiles pour un consentement éclairé.</p>
 
-// ── SCROLL PROGRESS ───────────────────────────────────────────────────────────
-window.addEventListener('scroll', () => {
-  const pct = (window.scrollY / (document.body.scrollHeight - window.innerHeight)) * 100;
-  document.getElementById('scrollBar').style.width = pct + '%';
-});
+        <div class="checkbox">
+            <input type="checkbox"> <strong>Documents à fournir</strong> :
+            <ul>
+                <li><input type="checkbox"> <strong>Diagnostics techniques</strong> (DPE, état des risques, amiante, électricité, gaz, termites, loi Carrez). <em>Source : Cass. Civ. 3e, 5 mars 2020, n° 18-26.316.</em></li>
+                <li><input type="checkbox"> <strong>Règlement de copropriété</strong> (si applicable).</li>
+                <li><input type="checkbox"> <strong>Projets urbains</strong> (PLU, permis de construire en cours dans le quartier).</li>
+            </ul>
+        </div>
 
-// ── FADE UP OBSERVER ─────────────────────────────────────────────────────────
-const observer = new IntersectionObserver((entries) => {
-  entries.forEach(entry => {
-    if (entry.isIntersecting) entry.target.classList.add('visible');
-  });
-}, { threshold: 0.1, rootMargin: '0px 0px -40px 0px' });
+        <div class="checkbox">
+            <input type="checkbox"> <strong>Vérifications</strong> :
+            <ul>
+                <li><input type="checkbox"> Les diagnostics sont <strong>à jour</strong> (validité &lt; 6 mois pour le DPE, &lt; 3 ans pour l’amiante, etc.).</li>
+                <li><input type="checkbox"> Le client a <strong>reçu et compris</strong> les documents (accusé de réception demandé).</li>
+            </ul>
+        </div>
 
-function observeAll() {
-  document.querySelectorAll('.fade-up').forEach(el => observer.observe(el));
-}
+        <div class="proof">
+            <strong>Preuve</strong> :
+            <ul>
+                <li><input type="checkbox"> Liste des documents transmis, datée et signée.</li>
+                <li><input type="checkbox"> Copie des diagnostics jointe au dossier.</li>
+            </ul>
+        </div>
+    </div>
 
-// ── INIT ──────────────────────────────────────────────────────────────────────
-renderEpisodes();
-observeAll();
+    <div class="section">
+        <h2>3️⃣ DEVOIR DE VÉRIFICATION (Art. L. 271-2)</h2>
+        <p><strong>Objectif</strong> : Contrôler l’exactitude des informations transmises.</p>
 
-// Re-observe after rendering
-setTimeout(observeAll, 200);
-</script>
+        <div class="checkbox">
+            <input type="checkbox"> <strong>À vérifier absolument</strong> :
+            <ul>
+                <li><input type="checkbox"> <strong>Surface loi Carrez</strong> : Mesurer ou faire mesurer par un professionnel. <em>Source : CA Paris, 12 mai 2021, RG n° 19/04215.</em></li>
+                <li><input type="checkbox"> <strong>Conformité des diagnostics</strong> : Dates, signatures, absence d’anomalies.</li>
+                <li><input type="checkbox"> <strong>Identité des parties</strong> : Pièces d’identité, pouvoir des mandataires.</li>
+                <li><input type="checkbox"> <strong>Capacité financière de l’acheteur</strong> : Accord de principe de la banque.</li>
+            </ul>
+        </div>
 
+        <div class="proof">
+            <strong>Preuve</strong> :
+            <ul>
+                <li><input type="checkbox"> Procès-verbal de vérification signé.</li>
+                <li><input type="checkbox"> Copie des documents contrôlés (ex : attestation de mesurage Carrez).</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>4️⃣ DEVOIR DE CONTRÔLE (Art. L. 271-6)</h2>
+        <p><strong>Objectif</strong> : S’assurer de la régularité de la transaction jusqu’à la signature.</p>
+
+        <div class="checkbox">
+            <input type="checkbox"> <strong>Points de contrôle</strong> :
+            <ul>
+                <li><input type="checkbox"> <strong>Solvabilité de l’acheteur</strong> : Accord de principe du prêt. <em>Source : TGI Paris, jurisprudence 2022.</em></li>
+                <li><input type="checkbox"> <strong>Absence de vices du consentement</strong> : Pas de pression, pas de dissimulation.</li>
+                <li><input type="checkbox"> <strong>Respect des délais légaux</strong> (délai de rétractation, conditions suspensives).</li>
+            </ul>
+        </div>
+
+        <div class="proof">
+            <strong>Preuve</strong> :
+            <ul>
+                <li><input type="checkbox"> Email ou courrier confirmant la régularité du dossier.</li>
+                <li><input type="checkbox"> Checklist de contrôle archivée.</li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="section">
+        <h2>📌 MODÈLE D’EMAIL RÉCAPITULATIF</h2>
+        <p><strong>Objet</strong> : Récapitulatif de vos droits et de nos vérifications – [Adresse du bien]</p>
+        <p><em>Cher [Client],<br>
+Comme convenu lors de notre entretien du [date], voici la liste des points que nous avons vérifiés pour sécuriser votre transaction :<br>
+1. <strong>Conseil</strong> : Nous vous avons informé sur [liste des points].<br>
+2. <strong>Information</strong> : Vous avez reçu [liste des documents].<br>
+3. <strong>Vérification</strong> : Nous avons contrôlé [liste des éléments].<br>
+4. <strong>Contrôle</strong> : Le dossier est régulier à ce jour.<br><br>
+Pour toute question, je reste à votre disposition.<br>
+Cordialement,<br>
+[Votre nom]</em></p>
+    </div>
+
+    <div class="warning">
+        <h2>⚠️ RAPPEL DES SANCTIONS EN CAS DE MANQUEMENT</h2>
+        <table>
+            <tr>
+                <th>Manquement</th>
+                <th>Sanction</th>
+                <th>Jurisprudence</th>
+            </tr>
+            <tr>
+                <td>Devoir de conseil</td>
+                <td>Remboursement commission</td>
+                <td>Cass. Civ. 1re, 10 juillet 2019</td>
+            </tr>
+            <tr>
+                <td>Devoir d’information</td>
+                <td>10 000 € de remboursement</td>
+                <td>Cass. Civ. 3e, 5 mars 2020</td>
+            </tr>
+            <tr>
+                <td>Devoir de vérification</td>
+                <td>15 000 € de dommages-intérêts</td>
+                <td>CA Paris, 12 mai 2021</td>
+            </tr>
+            <tr>
+                <td>Devoir de contrôle</td>
+                <td>Interdiction d’exercer</td>
+                <td>TGI Paris, 2022</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="footer">
+        <p>© [Votre Agence] – Document à archiver 5 ans – Mise à jour : [Date]</p>
+    </div>
 </body>
 </html>
