@@ -3,603 +3,753 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LEPER SONKO - Conseils en Immobilier</title>
+    <title>Grille Apporteurs d'Affaires — LEPER SONKO | Conseil Immobilier</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Montserrat:wght@300;400;500;600&family=Playfair+Display:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
     <style>
-        * {
+        :root {
+            --noir: #1A1A1A;
+            --noir-doux: #222222;
+            --or: #C9A961;
+            --or-pale: #E8D5A3;
+            --beige: #DBC8B6;
+            --beige-clair: #F5F0EA;
+            --blanc: #FAF7F2;
+            --gris-fin: #8A8A8A;
+            --gris-bord: rgba(201, 169, 97, 0.20);
+            --f-display: 'Cormorant Garamond', Georgia, serif;
+            --f-italic: 'Playfair Display', Georgia, serif;
+            --f-body: 'Montserrat', Arial, sans-serif;
+        }
+
+        *,
+        *::before,
+        *::after {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
 
-        :root {
-            --background: #fdfcfb;
-            --foreground: #3f3f3f;
-            --card: #ffffff;
-            --card-foreground: #3f3f3f;
-            --muted: #ebe8e3;
-            --muted-foreground: #8b8b8b;
-            --accent: #d4a574;
-            --accent-foreground: #3f3f3f;
-            --border: #ebe8e3;
-            --radius: 0.65rem;
+        html {
+            font-size: 16px;
+            scroll-behavior: smooth;
         }
 
         body {
-            font-family: 'Inter', sans-serif;
-            background-color: var(--background);
-            color: var(--foreground);
-            line-height: 1.6;
+            background: var(--noir);
+            color: var(--blanc);
+            font-family: var(--f-body);
+            font-weight: 400;
+            line-height: 1.7;
+            -webkit-font-smoothing: antialiased;
         }
 
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-        }
-
-        a {
-            color: inherit;
-            text-decoration: none;
-        }
-
-        button {
-            cursor: pointer;
-            border: none;
-            background: none;
-            font-family: inherit;
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            z-index: 50;
-            transition: all 0.3s ease;
-            background: transparent;
-        }
-
-        nav.scrolled {
-            background: rgba(253, 252, 251, 0.95);
-            backdrop-filter: blur(10px);
-            border-bottom: 1px solid var(--border);
-            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
-        }
-
-        .nav-container {
-            max-width: 1280px;
+        .page {
+            max-width: 1000px;
             margin: 0 auto;
-            padding: 1rem;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
+            padding: 0 20px 80px;
         }
 
-        .nav-logo {
-            font-size: 1.5rem;
-            font-weight: bold;
-            color: var(--foreground);
-        }
-
-        .nav-menu {
-            display: none;
-            gap: 2rem;
-        }
-
-        .nav-menu.active {
-            display: flex;
-        }
-
-        .nav-menu button {
-            font-size: 0.875rem;
-            transition: color 0.3s ease;
-        }
-
-        .nav-menu button:hover {
-            color: var(--accent);
-        }
-
-        @media (min-width: 768px) {
-            .nav-menu {
-                display: flex;
-            }
-        }
-
-        /* Hero Section */
+        /* Hero */
         .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            padding-top: 5rem;
-            padding-left: 1rem;
-            padding-right: 1rem;
             position: relative;
+            padding: 80px 0 60px;
+            border-bottom: 1px solid var(--gris-bord);
             overflow: hidden;
         }
 
         .hero::before {
             content: '';
             position: absolute;
-            top: 0;
-            right: 0;
-            width: 24rem;
-            height: 24rem;
-            background: rgba(212, 165, 116, 0.05);
+            top: -60px;
+            right: -120px;
+            width: 500px;
+            height: 500px;
             border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
+            background: radial-gradient(circle, rgba(201, 169, 97, 0.12) 0%, transparent 70%);
+            pointer-events: none;
         }
 
-        .hero::after {
+        .hero-eyebrow {
+            display: flex;
+            align-items: center;
+            gap: 16px;
+            font-size: 11px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--or);
+            font-weight: 500;
+            margin-bottom: 24px;
+        }
+
+        .hero-eyebrow::before {
             content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 24rem;
-            height: 24rem;
-            background: rgba(212, 165, 116, 0.05);
-            border-radius: 50%;
-            filter: blur(80px);
-            z-index: -1;
+            display: block;
+            width: 40px;
+            height: 1px;
+            background: var(--or);
         }
 
-        .hero-content {
-            max-width: 56rem;
-            margin: 0 auto;
-            text-align: center;
-            animation: fadeIn 0.8s ease-out;
+        .hero-brand {
+            font-family: var(--f-italic);
+            font-style: italic;
+            font-size: 16px;
+            letter-spacing: 3px;
+            color: var(--beige);
+            margin-bottom: 20px;
         }
 
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+        .hero-brand span {
+            font-style: normal;
+            color: var(--or);
+            font-weight: 600;
+            font-family: var(--f-body);
+            letter-spacing: 4px;
+            font-size: 14px;
         }
 
         .hero-title {
-            font-size: 3.75rem;
-            font-weight: bold;
-            line-height: 1.2;
-            margin-bottom: 1rem;
+            font-family: var(--f-display);
+            font-weight: 600;
+            font-size: clamp(40px, 6vw, 72px);
+            line-height: 1.1;
+            color: var(--blanc);
+            margin-bottom: 20px;
         }
 
-        @media (min-width: 768px) {
-            .hero-title {
-                font-size: 4.5rem;
-            }
-        }
-
-        .hero-subtitle {
-            font-size: 1.5rem;
-            color: var(--muted-foreground);
-            font-weight: 300;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .hero-subtitle {
-                font-size: 1.875rem;
-            }
-        }
-
-        .hero-tagline {
-            font-size: 1.25rem;
-            color: var(--muted-foreground);
-            max-width: 42rem;
-            margin: 0 auto 1.5rem;
-        }
-
-        .hero-description {
-            font-size: 1.125rem;
-            color: var(--muted-foreground);
-            max-width: 42rem;
-            margin: 0 auto 2rem;
+        .hero-title em {
+            color: var(--or);
             font-style: italic;
         }
 
-        .hero-cta {
-            display: inline-flex;
-            align-items: center;
-            gap: 0.5rem;
-            color: var(--accent);
-            transition: color 0.3s ease;
-            animation: bounce 2s infinite;
-            margin-top: 2rem;
+        .hero-subtitle {
+            font-size: 13px;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--gris-fin);
+            font-weight: 300;
         }
 
-        .hero-cta:hover {
-            color: rgba(212, 165, 116, 0.8);
-        }
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-            50% {
-                transform: translateY(-10px);
-            }
-        }
-
-        /* Sections */
-        section {
-            padding: 5rem 1rem;
-        }
-
-        section.bg-card {
-            background-color: var(--card);
-        }
-
-        .section-container {
-            max-width: 48rem;
-            margin: 0 auto;
-        }
-
-        .section-title {
-            font-size: 2.25rem;
-            font-weight: bold;
-            margin-bottom: 2rem;
-        }
-
-        @media (min-width: 768px) {
-            .section-title {
-                font-size: 3rem;
-            }
-        }
-
-        .section-content {
+        /* Section Label */
+        .section-label {
             display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
+            align-items: center;
+            gap: 20px;
+            margin-bottom: 32px;
         }
 
-        .section-content p {
-            font-size: 1.125rem;
-            color: var(--muted-foreground);
-            line-height: 1.8;
-        }
-
-        .accent-text {
-            color: var(--accent);
+        .section-label-text {
+            font-size: 10px;
+            letter-spacing: 5px;
+            text-transform: uppercase;
+            color: var(--or);
             font-weight: 600;
+            white-space: nowrap;
         }
 
-        /* Contact Section */
-        .contact-grid {
+        .section-label-line {
+            flex: 1;
+            height: 1px;
+            background: var(--gris-bord);
+        }
+
+        /* Legal Block */
+        .legal-block {
+            margin: 50px 0 60px;
+            padding: 28px 32px;
+            border: 1px solid var(--gris-bord);
+            border-left: 3px solid var(--or);
+            background: rgba(201, 169, 97, 0.04);
+        }
+
+        .legal-block-title {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--or);
+            font-weight: 600;
+            margin-bottom: 12px;
+        }
+
+        .legal-block p {
+            font-size: 13px;
+            line-height: 1.8;
+            color: var(--beige);
+            font-weight: 300;
+        }
+
+        .legal-block p strong {
+            color: var(--blanc);
+            font-weight: 500;
+        }
+
+        /* Section */
+        .section {
+            margin-bottom: 70px;
+        }
+
+        .section-heading {
+            font-family: var(--f-display);
+            font-weight: 600;
+            font-size: 40px;
+            line-height: 1.1;
+            color: var(--blanc);
+            margin-bottom: 8px;
+        }
+
+        .section-heading em {
+            color: var(--or);
+            font-style: italic;
+        }
+
+        .section-desc {
+            font-size: 13px;
+            color: var(--gris-fin);
+            font-weight: 300;
+            margin-bottom: 32px;
+            letter-spacing: 0.5px;
+        }
+
+        /* Cards */
+        .cards {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 2rem;
-            margin-bottom: 3rem;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-bottom: 28px;
         }
 
-        @media (min-width: 768px) {
-            .contact-grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-
-        .contact-card {
-            padding: 2rem;
-            border-radius: var(--radius);
-            border: 1px solid var(--border);
+        .card {
+            background: var(--noir-doux);
+            padding: 24px 20px 24px;
+            position: relative;
+            border: 1px solid rgba(201, 169, 97, 0.10);
             transition: all 0.3s ease;
         }
 
-        .contact-card:hover {
-            border-color: var(--accent);
-            background-color: rgba(212, 165, 116, 0.05);
+        .card:hover {
+            border-color: rgba(201, 169, 97, 0.35);
+            transform: translateY(-4px);
         }
 
-        .contact-card-title {
+        .card.card--highlight {
+            border-color: rgba(201, 169, 97, 0.35);
+            background: rgba(201, 169, 97, 0.06);
+        }
+
+        .card.card--highlight::before {
+            content: 'LE PLUS COURANT';
+            position: absolute;
+            top: -1px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: var(--or);
+            color: var(--noir);
+            font-size: 9px;
+            letter-spacing: 3px;
+            font-weight: 700;
+            padding: 4px 14px;
+            white-space: nowrap;
+        }
+
+        .card-level {
+            font-size: 9px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--or);
             font-weight: 600;
-            color: var(--foreground);
-            margin-bottom: 0.5rem;
+            margin-bottom: 12px;
         }
 
-        .contact-card-content {
-            color: var(--muted-foreground);
-            transition: color 0.3s ease;
-        }
-
-        .contact-card:hover .contact-card-content {
-            color: var(--accent);
-        }
-
-        .contact-cta {
-            display: inline-block;
-            padding: 1rem 2rem;
-            background-color: var(--accent);
-            color: var(--accent-foreground);
-            border-radius: var(--radius);
+        .card-title {
+            font-family: var(--f-display);
+            font-size: 22px;
             font-weight: 600;
-            transition: background-color 0.3s ease;
-            text-align: center;
+            color: var(--blanc);
+            margin-bottom: 10px;
+            line-height: 1.2;
         }
 
-        .contact-cta:hover {
-            background-color: rgba(212, 165, 116, 0.9);
+        .card-desc {
+            font-size: 12px;
+            color: var(--gris-fin);
+            font-weight: 300;
+            line-height: 1.7;
+            margin-bottom: 24px;
+            min-height: 48px;
         }
 
-        .contact-cta-container {
+        .card-rate {
+            font-family: var(--f-display);
+            font-size: 48px;
+            font-weight: 600;
+            color: var(--or);
+            line-height: 1;
+            margin-bottom: 4px;
+        }
+
+        .card-rate-label {
+            font-size: 10px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gris-fin);
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .card-divider {
+            height: 1px;
+            background: var(--gris-bord);
+            margin-bottom: 16px;
+        }
+
+        .card-example-label {
+            font-size: 9px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--gris-fin);
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .card-example-amount {
+            font-family: var(--f-display);
+            font-size: 26px;
+            font-weight: 600;
+            color: var(--beige);
+        }
+
+        .card-example-base {
+            font-size: 11px;
+            color: var(--gris-fin);
+            font-weight: 300;
+            margin-top: 2px;
+        }
+
+        /* Note */
+        .note {
+            display: flex;
+            align-items: flex-start;
+            gap: 14px;
+            padding: 16px 20px;
+            background: rgba(255, 255, 255, 0.02);
+            border-left: 2px solid var(--gris-bord);
+        }
+
+        .note-icon {
+            color: var(--or);
+            font-size: 14px;
+            margin-top: 2px;
+            flex-shrink: 0;
+        }
+
+        .note p {
+            font-size: 12px;
+            color: var(--gris-fin);
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .note p strong {
+            color: var(--beige);
+            font-weight: 500;
+        }
+
+        /* Pro Intro */
+        .pro-intro {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            padding: 28px 32px;
+            border: 1px solid var(--gris-bord);
+            margin-bottom: 32px;
+            background: rgba(201, 169, 97, 0.03);
+            flex-wrap: wrap;
+        }
+
+        .pro-split {
             text-align: center;
-            margin: 2rem 0;
+            flex-shrink: 0;
+        }
+
+        .pro-split-number {
+            font-family: var(--f-display);
+            font-size: 56px;
+            font-weight: 600;
+            color: var(--or);
+            line-height: 1;
+        }
+
+        .pro-split-label {
+            font-size: 9px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gris-fin);
+            font-weight: 500;
+        }
+
+        .pro-split-divider {
+            width: 1px;
+            height: 70px;
+            background: var(--gris-bord);
+            flex-shrink: 0;
+        }
+
+        .pro-split-text p {
+            font-size: 13px;
+            color: var(--beige);
+            font-weight: 300;
+            line-height: 1.8;
+        }
+
+        .pro-split-text p strong {
+            color: var(--blanc);
+            font-weight: 500;
+        }
+
+        /* Conditions */
+        .conditions {
+            margin-top: 60px;
+            padding-top: 48px;
+            border-top: 1px solid var(--gris-bord);
+        }
+
+        .conditions-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            margin-top: 32px;
+        }
+
+        .condition-item {
+            padding: 24px 26px;
+            background: var(--noir-doux);
+            border: 1px solid rgba(201, 169, 97, 0.08);
+        }
+
+        .condition-num {
+            font-family: var(--f-display);
+            font-size: 32px;
+            font-weight: 600;
+            color: rgba(201, 169, 97, 0.25);
+            line-height: 1;
+            margin-bottom: 8px;
+        }
+
+        .condition-title {
+            font-size: 11px;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: var(--or);
+            font-weight: 600;
+            margin-bottom: 8px;
+        }
+
+        .condition-text {
+            font-size: 12px;
+            color: var(--gris-fin);
+            font-weight: 300;
+            line-height: 1.75;
+        }
+
+        .condition-text strong {
+            color: var(--beige);
+            font-weight: 500;
         }
 
         /* Footer */
-        footer {
-            padding: 3rem 1rem;
-            background-color: var(--card);
-            border-top: 1px solid var(--border);
-        }
-
-        .footer-container {
-            max-width: 48rem;
-            margin: 0 auto;
-            text-align: center;
-        }
-
-        .footer-title {
-            font-size: 1.125rem;
-            font-weight: 600;
-            color: var(--foreground);
-            margin-bottom: 0.5rem;
-        }
-
-        .footer-subtitle {
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-            margin-bottom: 1.5rem;
-        }
-
-        .footer-links {
+        .footer {
+            margin-top: 70px;
+            padding-top: 32px;
+            border-top: 1px solid var(--gris-bord);
             display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            font-size: 0.875rem;
-            color: var(--muted-foreground);
-            margin-bottom: 1rem;
+            justify-content: space-between;
+            align-items: flex-end;
+            flex-wrap: wrap;
+            gap: 20px;
         }
 
-        @media (min-width: 768px) {
-            .footer-links {
-                flex-direction: row;
-                justify-content: center;
-                gap: 1rem;
-            }
+        .footer-brand {
+            font-family: var(--f-italic);
+            font-style: italic;
+            font-size: 19px;
+            color: var(--beige);
         }
 
-        .footer-links a {
-            transition: color 0.3s ease;
+        .footer-brand span {
+            font-style: normal;
+            color: var(--or);
+            font-weight: 600;
+            font-family: var(--f-body);
+            font-size: 15px;
+            letter-spacing: 3px;
         }
 
-        .footer-links a:hover {
-            color: var(--accent);
+        .footer-tagline {
+            font-size: 10px;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            color: var(--gris-fin);
+            font-weight: 300;
+            margin-top: 6px;
         }
 
-        .footer-divider {
-            display: none;
+        .footer-contact {
+            text-align: right;
         }
 
-        @media (min-width: 768px) {
-            .footer-divider {
-                display: inline;
-            }
+        .footer-contact p {
+            font-size: 12px;
+            color: var(--gris-fin);
+            font-weight: 300;
+            line-height: 1.9;
         }
 
-        .footer-copyright {
-            font-size: 0.75rem;
-            color: var(--muted-foreground);
-            padding-top: 1rem;
-            border-top: 1px solid var(--border);
-            margin-top: 1rem;
+        .footer-contact a {
+            color: var(--or);
+            text-decoration: none;
+            transition: color 0.2s;
         }
 
-        /* Utilities */
-        .container {
+        .footer-contact a:hover {
+            color: var(--or-pale);
+        }
+
+        .footer-legal {
             width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
+            font-size: 10px;
+            color: rgba(138, 138, 138, 0.5);
+            font-weight: 300;
+            line-height: 1.7;
+            margin-top: 16px;
+            padding-top: 16px;
+            border-top: 1px solid rgba(201, 169, 97, 0.08);
         }
 
-        @media (min-width: 640px) {
-            .container {
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
+        /* Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                padding: 60px 0 40px;
             }
-        }
 
-        @media (min-width: 1024px) {
-            .container {
-                padding-left: 2rem;
-                padding-right: 2rem;
-                max-width: 1280px;
+            .hero-title {
+                font-size: 40px;
+            }
+
+            .section-heading {
+                font-size: 32px;
+            }
+
+            .pro-intro {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .pro-split-divider {
+                display: none;
+            }
+
+            .footer {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .footer-contact {
+                text-align: center;
+            }
+
+            .cards {
+                grid-template-columns: 1fr;
+            }
+
+            .conditions-grid {
+                grid-template-columns: 1fr;
             }
         }
     </style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <h1 class="nav-logo">LEPER SONKO</h1>
-            <div class="nav-menu" id="navMenu">
-                <button onclick="scrollToSection('acheteurs')">Acheteurs</button>
-                <button onclick="scrollToSection('vendeurs')">Vendeurs</button>
-                <button onclick="scrollToSection('conseillers')">Conseillers</button>
-                <button onclick="scrollToSection('contact')">Contact</button>
-            </div>
+    <div class="page">
+        <!-- HERO -->
+        <header class="hero">
+            <div class="hero-eyebrow">Partenariat &amp; Prescription</div>
+            <div class="hero-brand">LEPER <span>SONKO</span></div>
+            <h1 class="hero-title">Grille de rémunération<br><em>apporteurs d'affaires</em></h1>
+            <p class="hero-subtitle">Paris, Genève &amp; Région parisienne — Résidentiel Premium</p>
+        </header>
+
+        <!-- CADRE LÉGAL -->
+        <div class="legal-block">
+            <div class="legal-block-title">Cadre légal — Loi Hoguet</div>
+            <p>
+                L'apporteur d'affaires ne perçoit <strong>jamais de commission sur le prix de vente</strong> du bien.
+                Conformément à la Loi Hoguet (n°70-9 du 2 janvier 1970), seul un professionnel titulaire d'une carte
+                professionnelle T peut percevoir des honoraires sur une transaction immobilière.
+                La rémunération de l'apporteur est versée <strong>par le conseiller immobilier</strong>, calculée sur
+                les honoraires HT perçus, et uniquement <strong>après signature de l'acte authentique</strong>.
+                Un <strong>contrat d'apport d'affaires écrit</strong> est obligatoire, signé avant toute mise en relation.
+            </p>
         </div>
-    </nav>
 
-    <!-- Hero Section -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1 class="hero-title">LEPER SONKO</h1>
-            <p class="hero-subtitle">Conseils en Immobilier</p>
-            <p class="hero-tagline">Ce que personne ne vous dit sur l'immobilier</p>
-            <p class="hero-description">La dimension humaine et émotionnelle derrière chaque décision</p>
-            <button class="hero-cta" onclick="scrollToSection('intro')">
-                <span>↓ Découvrez nos perspectives</span>
-            </button>
-        </div>
-    </section>
-
-    <!-- Introduction Section -->
-    <section id="intro" class="bg-card">
-        <div class="section-container">
-            <h2 class="section-title">L'immobilier, c'est une histoire humaine</h2>
-            <div class="section-content">
-                <p>Cette série vise à montrer la dimension humaine et émotionnelle de l'immobilier. L'objectif n'est pas de vendre, mais de créer de la confiance et d'éduquer. L'immobilier, ce ne sont pas seulement des mètres carrés, des prix ou des taux. C'est un miroir des émotions, des choix et des moments de vie. Chaque décision immobilière raconte une histoire, souvent plus profonde que ce que l'on imagine.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Acheteurs Section -->
-    <section id="acheteurs">
-        <div class="section-container">
-            <h2 class="section-title">Pour les Acheteurs</h2>
-            <div class="section-content">
-                <p><span class="accent-text">Vous savez ce que personne ne vous dit sur l'achat immobilier ?</span> C'est qu'il n'y aura jamais de bon moment. Et c'est exactement pour ça que c'est toujours le bon moment.</p>
-
-                <p>J'ai vu des dizaines d'acheteurs attendre que les taux baissent. D'autres, que les prix chutent. Mais dans ce marché, quand les taux baissent, les prix montent. Et quand les prix baissent, les taux remontent. Résultat : on attend un équilibre qui n'existe pas. Pendant ce temps, on paye un loyer. 800 euros, 900, parfois plus. Et surtout, on paye un prix plus lourd : celui du temps qui passe.</p>
-
-                <p>Mais la vraie raison, ce n'est ni le taux, ni le prix. C'est la peur. Peur de se tromper. Peur de s'engager. Peur de s'enfermer dans un endroit qui ne nous ressemble plus. Et cette peur, elle gèle tout. Elle met la vie sur pause. <span class="accent-text">Le bon moment pour acheter, ce n'est pas quand le marché est prêt. C'est quand VOUS, vous l'êtes.</span></p>
-
-                <p>La peur d'acheter n'est pas un défaut, c'est sain. On n'achète pas un bien, on achète une part de soi. Certains veulent se convaincre que c'est un investissement rationnel. Mais personne ne signe un contrat de vie sans émotion. L'achat immobilier, c'est un pari sur votre futur vous. Et si ce futur vous fait peur, c'est peut-être le signe que vous êtes en train de grandir.</p>
-
-                <p>Le coup de cœur n'est pas magique. C'est un mélange subtil de lumière, d'odeurs et de résonances intérieures. Un lieu peut sembler imparfait et pourtant vous toucher profondément. Vous ne cherchez pas seulement un toit. Vous cherchez un écho, un endroit qui résonne avec votre histoire.</p>
-
-                <p>On nous vend l'idée que devenir propriétaire, c'est « réussir sa vie ». Mais l'achat n'est pas un diplôme social. C'est une intimité à bâtir. Certains achètent pour se prouver qu'ils ont réussi. Les plus heureux, eux, achètent pour se sentir enfin à leur place.</p>
-
-                <p>Quand on parle d'achat, on pense souvent au prix au mètre carré. Mais ce que vous payez, ce n'est pas du béton. <span class="accent-text">C'est une liberté.</span> La liberté de ne plus dépendre d'un propriétaire, d'un préavis ou d'un bail. La liberté de repeindre un mur, d'aménager à votre goût. C'est la liberté d'écrire votre histoire chez vous.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Vendeurs Section -->
-    <section id="vendeurs" class="bg-card">
-        <div class="section-container">
-            <h2 class="section-title">Pour les Vendeurs</h2>
-            <div class="section-content">
-                <p>On me demande souvent : « C'est le bon moment pour vendre ? » Et je réponds toujours la même chose : il n'existe pas. Vendre, ce n'est pas une équation de marché. <span class="accent-text">C'est une page qui se tourne.</span> On attend la bonne conjoncture, la bonne offre, le bon acheteur… Mais derrière chaque attente, il y a souvent une hésitation plus intime : celle d'accepter que quelque chose se termine.</p>
-
-                <p>Un bien ne se vend jamais au bon moment. Il se vend quand on est prêt à dire au revoir.</p>
-
-                <p>Chaque logement a une histoire. Rires, disputes, anniversaires, absences… tout cela se ressent dans l'air. Le prix ne reflète jamais uniquement la pierre. Il reflète la mémoire, les émotions. Vendre, c'est accepter de laisser un autre écrire la suite.</p>
-
-                <p>Le vrai prix d'une vente n'est pas seulement financier. C'est celui qui vous permet de dormir tranquille. Le jour où vous vous dites : « Oui, je peux passer à autre chose », c'est le vrai moment de vendre. Même si ce n'est pas l'offre la plus haute. Même si ce n'est pas le marché idéal.</p>
-
-                <p>Vendre, ce n'est pas quitter des murs, c'est quitter une époque de sa vie. La maison où on a grandi, où les enfants sont partis, où les habitudes se sont enracinées. Accepter de vendre, c'est accepter de changer.</p>
-
-                <p>On peut avoir les plus belles photos et arguments, mais un bien se vend d'abord par l'émotion. L'acheteur n'achète pas des mètres carrés, il achète une projection de sa vie. L'éclairage, la lumière, l'accueil, l'atmosphère… tout compte.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Conseillers Section -->
-    <section id="conseillers">
-        <div class="section-container">
-            <h2 class="section-title">Pour les Conseillers</h2>
-            <div class="section-content">
-                <p>Il y a toujours une chose que le client ne dit pas. Ce n'est pas qu'il la cache, c'est qu'il ne sait pas comment la formuler. Une séparation qui s'annonce. Un prêt qui étouffe. Une peur d'être jugé. Ou juste cette honte d'avoir besoin de vendre.</p>
-
-                <p><span class="accent-text">Notre métier commence à l'endroit précis où les mots s'arrêtent.</span> Écouter, vraiment écouter, ce n'est pas entendre le besoin. C'est comprendre ce qu'il y a derrière. Parce que parfois, ce qu'un client veut, ce n'est pas vendre vite. C'est être compris doucement.</p>
-
-                <p>Les gens pensent qu'on vend des biens. En réalité, on accompagne des vies. Des départs, des débuts, des deuils, des renaissances. Notre mission n'est pas une signature, mais une transition.</p>
-
-                <p>L'écoute peut épuiser. Visages fermés, tensions, urgences, appels tardifs… Mais c'est elle qui fait la différence. Pas en chiffres, mais en confiance. Et cette confiance, elle ne se signe pas. Elle se ressent.</p>
-
-                <p>Même après des années, le doute reste. Douter de soi, de ses choix, de sa capacité à aider. Mais le doute garde notre humanité. <span class="accent-text">Un conseiller sans doute est un vendeur. Un conseiller avec doute est un guide.</span></p>
-
-                <p>Ce métier use, car on prend les émotions des autres en plein cœur. Mais il élève aussi, car on devient témoin de moments vrais : adieux, départs, recommencements. Fait avec bienveillance, il transforme aussi notre manière de vivre.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Conclusion Section -->
-    <section class="bg-card">
-        <div class="section-container">
-            <h2 class="section-title">Ce que personne ne vous dit</h2>
-            <div class="section-content">
-                <p>Ce que personne ne vous dit sur l'immobilier, ce n'est pas qu'il s'agit de vendre ou d'acheter. Il s'agit d'aider les gens à traverser une étape. À comprendre ce qu'ils quittent, ce qu'ils cherchent, et parfois ce qu'ils fuient. L'immobilier n'est pas un secteur, c'est un miroir. Un miroir des émotions les plus simples : peur, sécurité, besoin d'appartenance. Et ceux qui choisissent d'en faire leur métier deviennent les passeurs silencieux de ces émotions.</p>
-            </div>
-        </div>
-    </section>
-
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-container">
-            <div style="text-align: center; margin-bottom: 3rem;">
-                <h2 class="section-title">Votre projet est unique! Parlons-en.
-Paris🇫🇷 • Genève🇨🇭 • Réseau international</h2>
-                <p style="font-size: 1.125rem; color: var(--muted-foreground);">Contactez-moi pour un temps d’échange dédié à l’analyse de votre projet immobilier.</p>
+        <!-- SECTION PARTICULIER -->
+        <section class="section">
+            <div class="section-label">
+                <span class="section-label-text">Particulier</span>
+                <span class="section-label-line"></span>
             </div>
 
-            <div class="contact-grid">
-                <a href="tel:+33626507761" class="contact-card">
-                    <div class="contact-card-title">📞 Téléphone</div>
-                    <div class="contact-card-content">+33 6 26 50 77 61</div>
-                </a>
+            <h2 class="section-heading">Apport <em>occasionnel</em></h2>
+            <p class="section-desc">Pour toute personne physique apportant un contact vendeur ou acquéreur de manière non habituelle</p>
 
-                <a href="mailto:andre.sonko@expfrance.fr" class="contact-card">
-                    <div class="contact-card-title">✉️ Email</div>
-                    <div class="contact-card-content">andre.sonko@expfrance.fr</div>
-                </a>
+            <div class="cards">
+                <div class="card">
+                    <div class="card-level">Niveau 1</div>
+                    <div class="card-title">Contact simple</div>
+                    <div class="card-desc">Nom et coordonnées d'un vendeur ou d'un acquéreur, sans qualification du projet</div>
+                    <div class="card-rate">5<span style="font-size:24px">%</span></div>
+                    <div class="card-rate-label">des honoraires HT</div>
+                    <div class="card-divider"></div>
+                    <div class="card-example-label">Exemple — honoraires 15 000 €</div>
+                    <div class="card-example-amount">750 €</div>
+                    <div class="card-example-base">net avant déclaration fiscale</div>
+                </div>
+
+                <div class="card card--highlight">
+                    <div class="card-level">Niveau 2</div>
+                    <div class="card-title">Contact qualifié</div>
+                    <div class="card-desc">Projet confirmé, bien identifié, rendez-vous pris et contexte de vente ou d'achat précisé</div>
+                    <div class="card-rate">8<span style="font-size:24px">%</span></div>
+                    <div class="card-rate-label">des honoraires HT</div>
+                    <div class="card-divider"></div>
+                    <div class="card-example-label">Exemple — honoraires 15 000 €</div>
+                    <div class="card-example-amount">1 200 €</div>
+                    <div class="card-example-base">net avant déclaration fiscale</div>
+                </div>
+
+                <div class="card">
+                    <div class="card-level">Niveau 3</div>
+                    <div class="card-title">Apport complet</div>
+                    <div class="card-desc">Mandat de vente signé apporté, ou acquéreur finançable présenté avec dossier constitué</div>
+                    <div class="card-rate">10<span style="font-size:24px">%</span></div>
+                    <div class="card-rate-label">des honoraires HT</div>
+                    <div class="card-divider"></div>
+                    <div class="card-example-label">Exemple — honoraires 15 000 €</div>
+                    <div class="card-example-amount">1 500 €</div>
+                    <div class="card-example-base">net avant déclaration fiscale</div>
+                </div>
             </div>
 
-            <div class="contact-cta-container">
-                <button class="contact-cta" onclick="window.location.href='tel:+33626507761'">M'appeler maintenant</button>
+            <div class="note">
+                <span class="note-icon">→</span>
+                <p>
+                    <strong>Versement :</strong> après signature de l'acte authentique, sous 15 jours.
+                    La rémunération est à <strong>déclarer aux services fiscaux</strong> comme revenu occasionnel.
+                    L'apport ne doit pas revêtir un caractère habituel ou professionnel pour un particulier.
+                </p>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- Footer -->
-    <footer>
-        <div class="footer-container">
-            <h3 class="footer-title">LEPER SONKO</h3>
-            <p class="footer-subtitle">Conseils en Immobilier - La dimension humaine de vos décisions</p>
-
-            <div class="footer-links">
-                <a href="tel:+33626507761">+33 6 26 50 77 61</a>
-                <span class="footer-divider">•</span>
-                <a href="mailto:andre.sonko@expfrance.fr">andre.sonko@expfrance.fr</a>
+        <!-- SECTION PROFESSIONNEL -->
+        <section class="section">
+            <div class="section-label">
+                <span class="section-label-text">Professionnel</span>
+                <span class="section-label-line"></span>
             </div>
 
-            <div class="footer-copyright">
-                <p>© 2025 LEPER SONKO. Tous droits réservés.</p>
+            <h2 class="section-heading">Apport <em>professionnel</em></h2>
+            <p class="section-desc">Agent immobilier, mandataire, notaire, avocat, CGP, courtier, architecte — sur facture</p>
+
+            <div class="pro-intro">
+                <div class="pro-split">
+                    <div class="pro-split-number">50/50</div>
+                    <div class="pro-split-label">Répartition fixe</div>
+                </div>
+                <div class="pro-split-divider"></div>
+                <div class="pro-split-text">
+                    <p>
+                        La rémunération professionnelle repose sur un principe de <strong>réciprocité</strong> :
+                        les honoraires HT perçus sur l'affaire apportée sont partagés à parts égales.
+                        Cette grille s'applique quel que soit le montant de la transaction, sans palier ni plafond.
+                        <br><br>
+                        <strong>Condition :</strong> l'apporteur doit pouvoir émettre une facture (auto-entrepreneur, société, agent commercial enregistré).
+                    </p>
+                </div>
             </div>
-        </div>
-    </footer>
 
-    <script>
-        // Navigation scroll effect
-        const navbar = document.getElementById('navbar');
-        window.addEventListener('scroll', () => {
-            if (window.scrollY > 50) {
-                navbar.classList.add('scrolled');
-            } else {
-                navbar.classList.remove('scrolled');
-            }
-        });
+            <div class="note">
+                <span class="note-icon">→</span>
+                <p>
+                    <strong>Versement :</strong> après signature de l'acte authentique, sur présentation de facture, sous 15 jours.
+                    Les honoraires s'entendent <strong>hors taxes</strong>. TVA applicable selon le statut de l'apporteur.
+                </p>
+            </div>
+        </section>
 
-        // Smooth scroll to section
-        function scrollToSection(id) {
-            const element = document.getElementById(id);
-            if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
-            }
-        }
-    </script>
+        <!-- CONDITIONS COMMUNES -->
+        <section class="conditions">
+            <div class="section-label">
+                <span class="section-label-text">Conditions communes</span>
+                <span class="section-label-line"></span>
+            </div>
+
+            <div class="conditions-grid">
+                <div class="condition-item">
+                    <div class="condition-num">01</div>
+                    <div class="condition-title">Contrat préalable</div>
+                    <div class="condition-text">
+                        Un <strong>contrat d'apport d'affaires écrit</strong> doit être signé avant toute mise en relation.
+                        Aucune commission ne peut être revendiquée en l'absence de ce document.
+                    </div>
+                </div>
+
+                <div class="condition-item">
+                    <div class="condition-num">02</div>
+                    <div class="condition-title">Condition suspensive</div>
+                    <div class="condition-text">
+                        La commission est due <strong>uniquement si la transaction est effectivement conclue</strong>
+                        (signature de l'acte authentique chez le notaire).
+                    </div>
+                </div>
+
+                <div class="condition-item">
+                    <div class="condition-num">03</div>
+                    <div class="condition-title">Exclusivité du dossier</div>
+                    <div class="condition-text">
+                        L'apporteur bénéficie de l'<strong>exclusivité de rémunération</strong> sur le dossier
+                        qu'il a formellement introduit en premier, tel que défini dans le contrat.
+                    </div>
+                </div>
+
+                <div class="condition-item">
+                    <div class="condition-num">04</div>
+                    <div class="condition-title">Durée de validité</div>
+                    <div class="condition-text">
+                        L'apport est valable <strong>6 mois</strong> à compter du premier contact formalisé.
+                        Passé ce délai, un nouvel accord écrit sera nécessaire pour maintenir les droits à commission.
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- FOOTER -->
+        <footer class="footer">
+            <div>
+                <div class="footer-brand">LEPER <span>SONKO</span></div>
+                <div class="footer-tagline">Sérénité · Élégance · Résultat</div>
+            </div>
+            <div class="footer-contact">
+                <p>
+                    <a href="mailto:andre.sonko@expfrance.fr">andre.sonko@expfrance.fr</a><br>
+                    <a href="tel:+33626507761">+33 6 26 50 77 61</a><br>
+                    <a href="https://lepersonko.com" target="_blank">lepersonko.com</a>
+                </p>
+            </div>
+            <div class="footer-legal">
+                Conseiller immobilier indépendant eXp France · RSAC 412 833 709 ·
+                Document non contractuel, établi à titre indicatif. Toute collaboration est formalisée par un contrat d'apport d'affaires écrit signé par les deux parties.
+                Grille en vigueur à compter de juin 2026. Les montants s'entendent hors taxes.
+            </div>
+        </footer>
+    </div>
 </body>
 </html>
